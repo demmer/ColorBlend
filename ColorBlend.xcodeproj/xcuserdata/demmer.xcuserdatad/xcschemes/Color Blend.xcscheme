@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
-               BuildableName = "Color Blend.app"
-               BlueprintName = "Color Blend"
-               ReferencedContainer = "container:Color Blend.xcodeproj">
+               BuildableName = "ColorBlend.app"
+               BlueprintName = "ColorBlend"
+               ReferencedContainer = "container:ColorBlend.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D70F06D91CBDC1E800581E76"
-               BuildableName = "Color BlendTests.xctest"
-               BlueprintName = "Color BlendTests"
-               ReferencedContainer = "container:Color Blend.xcodeproj">
+               BuildableName = "ColorBlend.xctest"
+               BlueprintName = "ColorBlendTests"
+               ReferencedContainer = "container:ColorBlend.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D70F06E41CBDC1E800581E76"
-               BuildableName = "Color BlendUITests.xctest"
-               BlueprintName = "Color BlendUITests"
-               ReferencedContainer = "container:Color Blend.xcodeproj">
+               BuildableName = "ColorBlend.xctest"
+               BlueprintName = "ColorBlendUITests"
+               ReferencedContainer = "container:ColorBlend.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
-            BuildableName = "Color Blend.app"
-            BlueprintName = "Color Blend"
-            ReferencedContainer = "container:Color Blend.xcodeproj">
+            BuildableName = "ColorBlend.app"
+            BlueprintName = "ColorBlend"
+            ReferencedContainer = "container:ColorBlend.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
-            BuildableName = "Color Blend.app"
-            BlueprintName = "Color Blend"
-            ReferencedContainer = "container:Color Blend.xcodeproj">
+            BuildableName = "ColorBlend.app"
+            BlueprintName = "ColorBlend"
+            ReferencedContainer = "container:ColorBlend.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
-            BuildableName = "Color Blend.app"
-            BlueprintName = "Color Blend"
-            ReferencedContainer = "container:Color Blend.xcodeproj">
+            BuildableName = "ColorBlend.app"
+            BlueprintName = "ColorBlend"
+            ReferencedContainer = "container:ColorBlend.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

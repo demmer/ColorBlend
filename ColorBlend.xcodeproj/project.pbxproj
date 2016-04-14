@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D70F06C21CBDC1E800581E76 /* Color Blend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Blend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70F06C21CBDC1E800581E76 /* ColorBlend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorBlend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70F06C51CBDC1E800581E76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D70F06C71CBDC1E800581E76 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		D70F06C91CBDC1E800581E76 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -45,10 +45,10 @@
 		D70F06D01CBDC1E800581E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D70F06D31CBDC1E800581E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D70F06D51CBDC1E800581E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D70F06DA1CBDC1E800581E76 /* Color BlendTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color BlendTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70F06DA1CBDC1E800581E76 /* ColorBlend.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlend.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70F06DE1CBDC1E800581E76 /* Color_BlendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_BlendTests.swift; sourceTree = "<group>"; };
 		D70F06E01CBDC1E800581E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D70F06E51CBDC1E800581E76 /* Color BlendUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Color BlendUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlend.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_BlendUITests.swift; sourceTree = "<group>"; };
 		D70F06EB1CBDC1E800581E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,9 +81,9 @@
 		D70F06B91CBDC1E800581E76 = {
 			isa = PBXGroup;
 			children = (
-				D70F06C41CBDC1E800581E76 /* Color Blend */,
-				D70F06DD1CBDC1E800581E76 /* Color BlendTests */,
-				D70F06E81CBDC1E800581E76 /* Color BlendUITests */,
+				D70F06C41CBDC1E800581E76 /* ColorBlend */,
+				D70F06DD1CBDC1E800581E76 /* ColorBlendTests */,
+				D70F06E81CBDC1E800581E76 /* ColorBlendUITests */,
 				D70F06C31CBDC1E800581E76 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,14 +91,14 @@
 		D70F06C31CBDC1E800581E76 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D70F06C21CBDC1E800581E76 /* Color Blend.app */,
-				D70F06DA1CBDC1E800581E76 /* Color BlendTests.xctest */,
-				D70F06E51CBDC1E800581E76 /* Color BlendUITests.xctest */,
+				D70F06C21CBDC1E800581E76 /* ColorBlend.app */,
+				D70F06DA1CBDC1E800581E76 /* ColorBlend.xctest */,
+				D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D70F06C41CBDC1E800581E76 /* Color Blend */ = {
+		D70F06C41CBDC1E800581E76 /* ColorBlend */ = {
 			isa = PBXGroup;
 			children = (
 				D70F06C51CBDC1E800581E76 /* AppDelegate.swift */,
@@ -110,33 +110,36 @@
 				D70F06D21CBDC1E800581E76 /* LaunchScreen.storyboard */,
 				D70F06D51CBDC1E800581E76 /* Info.plist */,
 			);
+			name = ColorBlend;
 			path = "Color Blend";
 			sourceTree = "<group>";
 		};
-		D70F06DD1CBDC1E800581E76 /* Color BlendTests */ = {
+		D70F06DD1CBDC1E800581E76 /* ColorBlendTests */ = {
 			isa = PBXGroup;
 			children = (
 				D70F06DE1CBDC1E800581E76 /* Color_BlendTests.swift */,
 				D70F06E01CBDC1E800581E76 /* Info.plist */,
 			);
+			name = ColorBlendTests;
 			path = "Color BlendTests";
 			sourceTree = "<group>";
 		};
-		D70F06E81CBDC1E800581E76 /* Color BlendUITests */ = {
+		D70F06E81CBDC1E800581E76 /* ColorBlendUITests */ = {
 			isa = PBXGroup;
 			children = (
 				D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */,
 				D70F06EB1CBDC1E800581E76 /* Info.plist */,
 			);
+			name = ColorBlendUITests;
 			path = "Color BlendUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D70F06C11CBDC1E800581E76 /* Color Blend */ = {
+		D70F06C11CBDC1E800581E76 /* ColorBlend */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D70F06EE1CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "Color Blend" */;
+			buildConfigurationList = D70F06EE1CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlend" */;
 			buildPhases = (
 				D70F06BE1CBDC1E800581E76 /* Sources */,
 				D70F06BF1CBDC1E800581E76 /* Frameworks */,
@@ -146,14 +149,14 @@
 			);
 			dependencies = (
 			);
-			name = "Color Blend";
+			name = ColorBlend;
 			productName = "Color Blend";
-			productReference = D70F06C21CBDC1E800581E76 /* Color Blend.app */;
+			productReference = D70F06C21CBDC1E800581E76 /* ColorBlend.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D70F06D91CBDC1E800581E76 /* Color BlendTests */ = {
+		D70F06D91CBDC1E800581E76 /* ColorBlendTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D70F06F11CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "Color BlendTests" */;
+			buildConfigurationList = D70F06F11CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendTests" */;
 			buildPhases = (
 				D70F06D61CBDC1E800581E76 /* Sources */,
 				D70F06D71CBDC1E800581E76 /* Frameworks */,
@@ -164,14 +167,14 @@
 			dependencies = (
 				D70F06DC1CBDC1E800581E76 /* PBXTargetDependency */,
 			);
-			name = "Color BlendTests";
+			name = ColorBlendTests;
 			productName = "Color BlendTests";
-			productReference = D70F06DA1CBDC1E800581E76 /* Color BlendTests.xctest */;
+			productReference = D70F06DA1CBDC1E800581E76 /* ColorBlend.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D70F06E41CBDC1E800581E76 /* Color BlendUITests */ = {
+		D70F06E41CBDC1E800581E76 /* ColorBlendUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D70F06F41CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "Color BlendUITests" */;
+			buildConfigurationList = D70F06F41CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendUITests" */;
 			buildPhases = (
 				D70F06E11CBDC1E800581E76 /* Sources */,
 				D70F06E21CBDC1E800581E76 /* Frameworks */,
@@ -182,9 +185,9 @@
 			dependencies = (
 				D70F06E71CBDC1E800581E76 /* PBXTargetDependency */,
 			);
-			name = "Color BlendUITests";
+			name = ColorBlendUITests;
 			productName = "Color BlendUITests";
-			productReference = D70F06E51CBDC1E800581E76 /* Color BlendUITests.xctest */;
+			productReference = D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +213,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D70F06BD1CBDC1E800581E76 /* Build configuration list for PBXProject "Color Blend" */;
+			buildConfigurationList = D70F06BD1CBDC1E800581E76 /* Build configuration list for PBXProject "ColorBlend" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -223,9 +226,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D70F06C11CBDC1E800581E76 /* Color Blend */,
-				D70F06D91CBDC1E800581E76 /* Color BlendTests */,
-				D70F06E41CBDC1E800581E76 /* Color BlendUITests */,
+				D70F06C11CBDC1E800581E76 /* ColorBlend */,
+				D70F06D91CBDC1E800581E76 /* ColorBlendTests */,
+				D70F06E41CBDC1E800581E76 /* ColorBlendUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -290,12 +293,12 @@
 /* Begin PBXTargetDependency section */
 		D70F06DC1CBDC1E800581E76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D70F06C11CBDC1E800581E76 /* Color Blend */;
+			target = D70F06C11CBDC1E800581E76 /* ColorBlend */;
 			targetProxy = D70F06DB1CBDC1E800581E76 /* PBXContainerItemProxy */;
 		};
 		D70F06E71CBDC1E800581E76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D70F06C11CBDC1E800581E76 /* Color Blend */;
+			target = D70F06C11CBDC1E800581E76 /* ColorBlend */;
 			targetProxy = D70F06E61CBDC1E800581E76 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -410,7 +413,7 @@
 				INFOPLIST_FILE = "Color Blend/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ColorBlend;
 			};
 			name = Debug;
 		};
@@ -421,7 +424,7 @@
 				INFOPLIST_FILE = "Color Blend/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ColorBlend;
 			};
 			name = Release;
 		};
@@ -433,8 +436,8 @@
 				INFOPLIST_FILE = "Color BlendTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Blend.app/Color Blend";
+				PRODUCT_NAME = ColorBlend;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorBlend.app/ColorBlend";
 			};
 			name = Debug;
 		};
@@ -445,8 +448,8 @@
 				INFOPLIST_FILE = "Color BlendTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Color Blend.app/Color Blend";
+				PRODUCT_NAME = ColorBlend;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorBlend.app/ColorBlend";
 			};
 			name = Release;
 		};
@@ -457,7 +460,7 @@
 				INFOPLIST_FILE = "Color BlendUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ColorBlend;
 				TEST_TARGET_NAME = "Color Blend";
 				USES_XCTRUNNER = YES;
 			};
@@ -469,7 +472,7 @@
 				INFOPLIST_FILE = "Color BlendUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ColorBlend;
 				TEST_TARGET_NAME = "Color Blend";
 				USES_XCTRUNNER = YES;
 			};
@@ -478,7 +481,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D70F06BD1CBDC1E800581E76 /* Build configuration list for PBXProject "Color Blend" */ = {
+		D70F06BD1CBDC1E800581E76 /* Build configuration list for PBXProject "ColorBlend" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D70F06EC1CBDC1E800581E76 /* Debug */,
@@ -487,7 +490,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D70F06EE1CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "Color Blend" */ = {
+		D70F06EE1CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlend" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D70F06EF1CBDC1E800581E76 /* Debug */,
@@ -495,7 +498,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		D70F06F11CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "Color BlendTests" */ = {
+		D70F06F11CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D70F06F21CBDC1E800581E76 /* Debug */,
@@ -503,7 +506,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		D70F06F41CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "Color BlendUITests" */ = {
+		D70F06F41CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D70F06F51CBDC1E800581E76 /* Debug */,
