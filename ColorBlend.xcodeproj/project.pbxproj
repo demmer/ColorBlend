@@ -24,14 +24,14 @@
 			containerPortal = D70F06BA1CBDC1E800581E76 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D70F06C11CBDC1E800581E76;
-			remoteInfo = "ColorBlend";
+			remoteInfo = ColorBlend;
 		};
 		D70F06E61CBDC1E800581E76 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D70F06BA1CBDC1E800581E76 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D70F06C11CBDC1E800581E76;
-			remoteInfo = "ColorBlend";
+			remoteInfo = ColorBlend;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -110,8 +110,7 @@
 				D70F06D21CBDC1E800581E76 /* LaunchScreen.storyboard */,
 				D70F06D51CBDC1E800581E76 /* Info.plist */,
 			);
-			name = ColorBlend;
-			path = "ColorBlend";
+			path = ColorBlend;
 			sourceTree = "<group>";
 		};
 		D70F06DD1CBDC1E800581E76 /* ColorBlendTests */ = {
@@ -120,8 +119,7 @@
 				D70F06DE1CBDC1E800581E76 /* Color_BlendTests.swift */,
 				D70F06E01CBDC1E800581E76 /* Info.plist */,
 			);
-			name = ColorBlendTests;
-			path = "ColorBlendTests";
+			path = ColorBlendTests;
 			sourceTree = "<group>";
 		};
 		D70F06E81CBDC1E800581E76 /* ColorBlendUITests */ = {
@@ -130,8 +128,7 @@
 				D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */,
 				D70F06EB1CBDC1E800581E76 /* Info.plist */,
 			);
-			name = ColorBlendUITests;
-			path = "ColorBlendUITests";
+			path = ColorBlendUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +147,7 @@
 			dependencies = (
 			);
 			name = ColorBlend;
-			productName = "ColorBlend";
+			productName = ColorBlend;
 			productReference = D70F06C21CBDC1E800581E76 /* ColorBlend.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -168,7 +165,7 @@
 				D70F06DC1CBDC1E800581E76 /* PBXTargetDependency */,
 			);
 			name = ColorBlendTests;
-			productName = "ColorBlendTests";
+			productName = ColorBlendTests;
 			productReference = D70F06DA1CBDC1E800581E76 /* ColorBlend.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -186,7 +183,7 @@
 				D70F06E71CBDC1E800581E76 /* PBXTargetDependency */,
 			);
 			name = ColorBlendUITests;
-			productName = "ColorBlendUITests";
+			productName = ColorBlendUITests;
 			productReference = D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -410,7 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "ColorBlend/Info.plist";
+				INFOPLIST_FILE = ColorBlend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
 				PRODUCT_NAME = ColorBlend;
@@ -421,7 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "ColorBlend/Info.plist";
+				INFOPLIST_FILE = ColorBlend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
 				PRODUCT_NAME = ColorBlend;
@@ -433,7 +430,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = "ColorBlendTests/Info.plist";
+				INFOPLIST_FILE = ColorBlendTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendTests";
 				PRODUCT_NAME = ColorBlend;
@@ -445,7 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = "ColorBlendTests/Info.plist";
+				INFOPLIST_FILE = ColorBlendTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendTests";
 				PRODUCT_NAME = ColorBlend;
@@ -457,11 +454,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = "ColorBlendUITests/Info.plist";
+				INFOPLIST_FILE = ColorBlendUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendUITests";
 				PRODUCT_NAME = ColorBlend;
-				TEST_TARGET_NAME = "ColorBlend";
+				TEST_TARGET_NAME = ColorBlend;
 				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
@@ -469,11 +466,11 @@
 		D70F06F61CBDC1E800581E76 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "ColorBlendUITests/Info.plist";
+				INFOPLIST_FILE = ColorBlendUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendUITests";
 				PRODUCT_NAME = ColorBlend;
-				TEST_TARGET_NAME = "ColorBlend";
+				TEST_TARGET_NAME = ColorBlend;
 				USES_XCTRUNNER = YES;
 			};
 			name = Release;
@@ -497,6 +494,7 @@
 				D70F06F01CBDC1E800581E76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D70F06F11CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +503,7 @@
 				D70F06F31CBDC1E800581E76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D70F06F41CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendUITests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +512,7 @@
 				D70F06F61CBDC1E800581E76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

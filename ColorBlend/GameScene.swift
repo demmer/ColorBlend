@@ -8,25 +8,25 @@
 
 import SpriteKit;
 
-struct PaletteDimensions {
-    static var width = 50
-    static var height = 90
-    static var padding = 10
-}
-
 class GameScene: SKScene {
     var contentCreated: Bool = false;
+    var colors: Set<SKColor> = [];
     
-    func addPaletteColor(color: UIColor, row: Int, col: Int) {
-        let xBase = Int(CGRectGetMinX(self.frame));
-        let yBase = Int(CGRectGetMinY(self.frame));
+    func addPaletteOval(color: UIColor, row: CGFloat, col: CGFloat) {
+        let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
+        let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
+
+        let width = sceneWidth / 8;
+        let height = 1.7 * width;
+        let size = CGSize(width: width, height: height);
+
+        let x = col * (sceneWidth / 6.0) - (sceneWidth / 12.0);
+        let y = sceneHeight - (row * 1.2 * height) + (height / 2);
         
-        let location = CGPoint(x: xBase + (col * (PaletteDimensions.width + PaletteDimensions.padding)),
-            y: yBase + (row * (PaletteDimensions.height + PaletteDimensions.padding)));
-        let size = CGSize(width: PaletteDimensions.width, height: PaletteDimensions.height);
+        let location = CGPoint(x: x, y: y)
         
         let sprite = SKShapeNode.init(ellipseOfSize: size)
-        sprite.strokeColor = color;
+        sprite.strokeColor = SKColor.blackColor();
         sprite.fillColor = color;
         sprite.position = location;
 
@@ -35,8 +35,18 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         if (!self.contentCreated) {
-            self.backgroundColor = SKColor.whiteColor();
-            self.addPaletteColor(UIColor.init(red: 0.5, green: 0, blue: 0, alpha: 1), row: 1, col: 1);
+            self.addPaletteOval(SKColor.redColor(),    row: 1, col: 1);
+            self.addPaletteOval(SKColor.blueColor(),   row: 1, col: 2);
+            self.addPaletteOval(SKColor.greenColor(),  row: 1, col: 3);
+            self.addPaletteOval(SKColor.yellowColor(), row: 1, col: 4);
+            self.addPaletteOval(SKColor.whiteColor(),  row: 1, col: 5);
+            self.addPaletteOval(SKColor.blackColor(),  row: 1, col: 6);
+            self.addPaletteOval(SKColor.purpleColor(), row: 2, col: 1);
+            self.addPaletteOval(SKColor.brownColor(),  row: 2, col: 2);
+            self.addPaletteOval(SKColor.orangeColor(), row: 2, col: 3);
+            self.addPaletteOval(SKColor.grayColor(),   row: 2, col: 4);
+            self.addPaletteOval(SKColor.cyanColor(),   row: 2, col: 5);
+            self.addPaletteOval(SKColor.init(red:1,green:0.75,blue:0.82,alpha:1), row: 2, col: 6);
         }
         self.contentCreated = true;
     }
