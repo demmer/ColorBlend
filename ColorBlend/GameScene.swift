@@ -22,7 +22,7 @@ class GameScene: SKScene {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
 
         let width = sceneWidth / 8;
-        let height = 1.5 * width;
+        let height = 1.3 * width;
         let size = CGSize(width: width, height: height);
 
         let x = col * (sceneWidth / 6.0) - (sceneWidth / 12.0);
@@ -135,6 +135,7 @@ class GameScene: SKScene {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (self.dragger != nil) {
             let location = touches.first!.locationInNode(self);
+            
             let node: SKShapeNode! = self.nodeAtPoint(location) as! SKShapeNode;
             if (node != nil && (self.canvas == node || node.fillColor == dragger.fillColor)) {
                 self.colors.append(self.dragger.fillColor)

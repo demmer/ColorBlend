@@ -199,6 +199,7 @@
 				TargetAttributes = {
 					D70F06C11CBDC1E800581E76 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = HSF5B9Y9RF;
 					};
 					D70F06D91CBDC1E800581E76 = {
 						CreatedOnToolsVersion = 7.2;
@@ -407,10 +408,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ColorBlend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
 				PRODUCT_NAME = ColorBlend;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -418,10 +422,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ColorBlend/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
 				PRODUCT_NAME = ColorBlend;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
