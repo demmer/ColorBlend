@@ -8,15 +8,34 @@
 
 import SpriteKit;
 
+enum Mode {
+    case Additive
+    case Subtractive
+};
+
+
+func printFonts() {
+    let fontFamilyNames = UIFont.familyNames()
+    for familyName in fontFamilyNames {
+        print("------------------------------")
+        print("Font Family Name = [\(familyName)]")
+        let names = UIFont.fontNamesForFamilyName(familyName)
+        print("Font Names = [\(names)]")
+    }
+}
+
+
 class GameScene: SKScene {
+    var mode: Mode = Mode.Subtractive
     var contentCreated: Bool = false;
     var colors: Array<SKColor> = [];
     var palette: Set<SKNode> = [];
     var canvas: SKShapeNode!;
     var currentColor: SKColor!;
     var dragger: SKShapeNode!;
-    var resetButton: SKSpriteNode!;
+    var resetButton: ResetButton!;
     var countLabel, blendLabel: SKLabelNode!;
+    var additiveMode, subtractiveMode: IconButton!;
     
     func addPaletteOval(color: UIColor, row: CGFloat, col: CGFloat) {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
@@ -71,18 +90,18 @@ class GameScene: SKScene {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
         let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
 
-        self.resetButton = SKSpriteNode(imageNamed: "reset");
-        self.resetButton.setScale(0.2);
-        self.resetButton.position = CGPoint(x: sceneWidth * 0.9, y: sceneHeight - self.resetButton.frame.height / 2);
-        self.addChild(self.resetButton);
+        self.additiveMode = IconButton(icon: "+", label: "Additive",
+                                       size: 50, location: CGPoint(x: sceneWidth * 0.15, y: sceneHeight - 75))
+        self.addChild(self.additiveMode)
+        self.additiveMode.active = true
 
-        let resetLabel = SKLabelNode(text: "Reset");
-        resetLabel.fontSize = 18;
-        resetLabel.fontName = "HelveticaNeue-Bold"
-        resetLabel.fontColor = SKColor.blackColor();
-        resetLabel.position = CGPoint(x: sceneWidth * 0.9 - resetLabel.frame.width,
-                                      y: self.resetButton.position.y);
-        self.addChild(resetLabel);
+        self.subtractiveMode = IconButton(icon: "-", label: "Subtractive",
+                                          size: 50, location: CGPoint(x: sceneWidth * 0.4, y: sceneHeight - 75))
+        self.addChild(self.subtractiveMode)
+
+        self.resetButton = ResetButton(size: 50, location: CGPoint(x: sceneWidth * 0.75, y: sceneHeight - 75))
+        self.addChild(self.resetButton);
+        
 
         self.countLabel = SKLabelNode(text: "Mixing");
         self.countLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75);
@@ -121,20 +140,27 @@ class GameScene: SKScene {
         let touch = touches.first;
         let location = touch!.locationInNode(self)
         let node = self.nodeAtPoint(location)
+        
+        if (self.additiveMode.containsPoint(location)) {
+            self.mode = .Additive;
+            self.additiveMode.active = true;
+            self.subtractiveMode.active = false;
+            self.updateCanvas()
 
-        if (node == self.resetButton) {
+        } else if (self.subtractiveMode.containsPoint(location)) {
+            self.mode = .Subtractive
+            self.additiveMode.active = false;
+            self.subtractiveMode.active = true;
+            self.updateCanvas()
+
+        } else if (self.resetButton.containsPoint(location)) {
             self.reset();
-            return;
-        }
-        
-        if (!self.palette.contains(node)) {
-            return
-        }
 
-        self.removeDragger();
-        
-        self.dragger = node.copy() as! SKShapeNode;
-        self.addChild(self.dragger);
+        } else if (self.palette.contains(node)) {
+            self.removeDragger();
+            self.dragger = node.copy() as! SKShapeNode;
+            self.addChild(self.dragger);
+        }
     }
 
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {self
@@ -167,23 +193,42 @@ class GameScene: SKScene {
         var newRed: CGFloat = 0;
         var newGreen: CGFloat = 0;
         var newBlue: CGFloat = 0;
-        
-        for color in self.colors {
-            var red: CGFloat = 0.0;
-            var green: CGFloat = 0.0;
-            var blue: CGFloat = 0.0;
-            
-            color.getRed(&red, green: &green, blue: &blue, alpha: nil);
-            
-            newRed += red;
-            newGreen += green;
-            newBlue += blue;
+
+        if (self.colors.count > 0) {
+            if (self.mode == Mode.Additive) {
+                for color in self.colors {
+                    var red: CGFloat = 0
+                    var green: CGFloat = 0
+                    var blue: CGFloat = 0;
+                    color.getRed(&red, green: &green, blue: &blue, alpha: nil);
+                    
+                    newRed += red;
+                    newGreen += green;
+                    newBlue += blue;
+                }
+                
+                newRed = newRed / CGFloat(self.colors.count);
+                newGreen = newGreen / CGFloat(self.colors.count);
+                newBlue = newBlue / CGFloat(self.colors.count);
+            } else {
+                newRed = 1.0;
+                newGreen = 1.0;
+                newBlue = 1.0;
+                
+                for color in self.colors {
+                    var red: CGFloat = 0
+                    var green: CGFloat = 0
+                    var blue: CGFloat = 0;
+                    color.getRed(&red, green: &green, blue: &blue, alpha: nil);
+                
+                    newRed = newRed * red;
+                    newGreen = newGreen * green;
+                    newBlue = newBlue * blue;
+                }
+            }
         }
 
-        newRed = newRed / CGFloat(self.colors.count);
-        newGreen = newGreen / CGFloat(self.colors.count);
-        newBlue = newBlue / CGFloat(self.colors.count);
-
+        print("update currentColor \(self.mode) \(newRed) \(newGreen) \(newBlue)")
         self.currentColor = SKColor.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0);
         self.updateStatus();
         self.canvas.fillColor = self.currentColor;

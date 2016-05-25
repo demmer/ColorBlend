@@ -16,6 +16,9 @@
 		D70F06D41CBDC1E800581E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70F06D21CBDC1E800581E76 /* LaunchScreen.storyboard */; };
 		D70F06DF1CBDC1E800581E76 /* Color_BlendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06DE1CBDC1E800581E76 /* Color_BlendTests.swift */; };
 		D70F06EA1CBDC1E800581E76 /* Color_BlendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */; };
+		D72271451CF6023500EE4770 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271441CF6023500EE4770 /* IconButton.swift */; };
+		D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271461CF62AD200EE4770 /* ResetButton.swift */; };
+		D72271491CF62C2D00EE4770 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271481CF62C2D00EE4770 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlend.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_BlendUITests.swift; sourceTree = "<group>"; };
 		D70F06EB1CBDC1E800581E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D72271441CF6023500EE4770 /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		D72271461CF62AD200EE4770 /* ResetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
+		D72271481CF62C2D00EE4770 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,9 @@
 				D70F06C51CBDC1E800581E76 /* AppDelegate.swift */,
 				D70F06C71CBDC1E800581E76 /* GameScene.sks */,
 				D70F06C91CBDC1E800581E76 /* GameScene.swift */,
+				D72271441CF6023500EE4770 /* IconButton.swift */,
+				D72271481CF62C2D00EE4770 /* Constants.swift */,
+				D72271461CF62AD200EE4770 /* ResetButton.swift */,
 				D70F06CB1CBDC1E800581E76 /* GameViewController.swift */,
 				D70F06CD1CBDC1E800581E76 /* Main.storyboard */,
 				D70F06D01CBDC1E800581E76 /* Assets.xcassets */,
@@ -264,9 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72271451CF6023500EE4770 /* IconButton.swift in Sources */,
+				D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */,
 				D70F06CA1CBDC1E800581E76 /* GameScene.swift in Sources */,
 				D70F06CC1CBDC1E800581E76 /* GameViewController.swift in Sources */,
 				D70F06C61CBDC1E800581E76 /* AppDelegate.swift in Sources */,
+				D72271491CF62C2D00EE4770 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
