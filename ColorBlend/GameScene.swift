@@ -13,10 +13,10 @@ class GameScene: SKScene {
     var colors: Array<SKColor> = [];
     var palette: Set<SKNode> = [];
     var canvas: SKShapeNode!;
-    var currentColor: SKColor = SKColor.whiteColor();
+    var currentColor: SKColor!;
     var dragger: SKShapeNode!;
     var resetButton: SKSpriteNode!;
-    var statusLabel: SKLabelNode!;
+    var countLabel, blendLabel: SKLabelNode!;
     
     func addPaletteOval(color: UIColor, row: CGFloat, col: CGFloat) {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
@@ -70,24 +70,35 @@ class GameScene: SKScene {
     func addControls() {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
         let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
-        
-        let title = SKLabelNode(text: "Color Blend");
-        title.position = CGPoint(x: sceneWidth / 2, y: sceneHeight - 50);
-        title.fontSize = 36;
-        title.fontColor = SKColor.blackColor();
-        self.addChild(title);
 
-        let status = SKLabelNode(text: self.getStatusText());
-        status.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75);
-        status.fontSize = 16;
-        status.fontColor = SKColor.blackColor();
-        self.addChild(status);
-        self.statusLabel = status;
-        
         self.resetButton = SKSpriteNode(imageNamed: "reset");
-        self.resetButton.position = CGPoint(x: sceneWidth * 0.9, y: sceneHeight * 0.8);
         self.resetButton.setScale(0.2);
+        self.resetButton.position = CGPoint(x: sceneWidth * 0.9, y: sceneHeight - self.resetButton.frame.height / 2);
         self.addChild(self.resetButton);
+
+        let resetLabel = SKLabelNode(text: "Reset");
+        resetLabel.fontSize = 18;
+        resetLabel.fontName = "HelveticaNeue-Bold"
+        resetLabel.fontColor = SKColor.blackColor();
+        resetLabel.position = CGPoint(x: sceneWidth * 0.9 - resetLabel.frame.width,
+                                      y: self.resetButton.position.y);
+        self.addChild(resetLabel);
+
+        self.countLabel = SKLabelNode(text: "Mixing");
+        self.countLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75);
+        self.countLabel.fontSize = 16;
+        self.countLabel.fontName = "HelveticaNeue"
+        self.countLabel.fontColor = SKColor.blackColor();
+        self.addChild(self.countLabel);
+
+        self.blendLabel = SKLabelNode(text: "Red Green Blue");
+        self.blendLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75 - self.countLabel.frame.height);
+        self.blendLabel.fontSize = 16;
+        self.blendLabel.fontName = "HelveticaNeue"
+        self.blendLabel.fontColor = SKColor.blackColor();
+        self.addChild(self.blendLabel);
+        
+        self.updateStatus();
     }
     
     override func didMoveToView(view: SKView) {
@@ -147,9 +158,9 @@ class GameScene: SKScene {
     
     func reset() {
         self.colors.removeAll();
-        self.currentColor = SKColor.whiteColor()
-        self.statusLabel.text = self.getStatusText();
-        self.canvas.fillColor = self.currentColor
+        self.currentColor = nil;
+        self.updateStatus();
+        self.canvas.fillColor = SKColor.whiteColor()
     }
     
     func updateCanvas() {
@@ -168,24 +179,27 @@ class GameScene: SKScene {
             newGreen += green;
             newBlue += blue;
         }
-        
+
         newRed = newRed / CGFloat(self.colors.count);
         newGreen = newGreen / CGFloat(self.colors.count);
         newBlue = newBlue / CGFloat(self.colors.count);
-        
+
         self.currentColor = SKColor.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0);
-        self.statusLabel.text = self.getStatusText();
+        self.updateStatus();
         self.canvas.fillColor = self.currentColor;
     }
 
-    func getStatusText() -> String {
+    func updateStatus() {
         var red: CGFloat = 0.0;
         var green: CGFloat = 0.0;
         var blue: CGFloat = 0.0;
         
-        self.currentColor.getRed(&red, green: &green, blue: &blue, alpha: nil);
-
-        return "Blending \(self.colors.count) color(s) to RGB \(Int(red*255)) \(Int(green*255)) \(Int(blue*255))";
+        if (self.currentColor != nil) {
+            self.currentColor.getRed(&red, green: &green, blue: &blue, alpha: nil);
+        }
+        
+        self.countLabel.text = "Mixed \(self.colors.count) color(s):";
+        self.blendLabel.text = "Red \(Int(red*100))% Green \(Int(green*100))% Blue \(Int(blue*100))%";
     }
    
     override func update(currentTime: CFTimeInterval) {
