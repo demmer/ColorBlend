@@ -411,8 +411,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ColorBlend/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
+				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlend;
 				PRODUCT_NAME = ColorBlend;
 				PROVISIONING_PROFILE = "";
 			};
@@ -425,8 +426,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ColorBlend/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-Blend";
+				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlend;
 				PRODUCT_NAME = ColorBlend;
 				PROVISIONING_PROFILE = "";
 			};
