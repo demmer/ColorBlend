@@ -38,11 +38,22 @@ class IconButton: SKNode {
         self.shape.lineWidth = 3 * box / size
 
         self.icon = SKLabelNode(text: icon)
-        self.icon.fontSize = CGFloat(size)
         self.icon.fontName = Constants.LabelFont
         self.icon.fontColor = SKColor.blackColor()
-        self.icon.position = CGPoint(x: 0, y: 00)
+        self.icon.position = CGPoint(x: 0, y: 0)
+        self.icon.horizontalAlignmentMode = .Center
         self.icon.verticalAlignmentMode = .Center
+
+        // Downscale the font until the text fits in < 30px
+        self.icon.fontSize = 32
+        while (self.icon.fontSize > 1) {
+            let frame = self.icon.calculateAccumulatedFrame()
+            if (max(frame.height, frame.width) > 30) {
+                self.icon.fontSize -= 1
+            } else {
+                break
+            }
+        }
 
         self.label = SKLabelNode(text: label)
         self.label.fontSize = 16;

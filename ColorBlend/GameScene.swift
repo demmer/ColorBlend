@@ -26,7 +26,7 @@ func printFonts() {
 
 
 class GameScene: SKScene {
-    var mode: Mode = Mode.Subtractive
+    var mode: Mode!;
     var contentCreated: Bool = false;
     var colors: Array<SKColor> = [];
     var palette: Set<SKNode> = [];
@@ -34,7 +34,7 @@ class GameScene: SKScene {
     var currentColor: SKColor!;
     var dragger: SKShapeNode!;
     var resetButton: ResetButton!;
-    var countLabel, blendLabel: SKLabelNode!;
+    var countLabel, blendLabel, hsvLabel: SKLabelNode!;
     var additiveMode, subtractiveMode: IconButton!;
     
     func addPaletteOval(color: UIColor, row: CGFloat, col: CGFloat) {
@@ -70,6 +70,7 @@ class GameScene: SKScene {
         self.addPaletteOval(SKColor.orangeColor(), row: 2, col: 3);
         self.addPaletteOval(SKColor.grayColor(),   row: 2, col: 4);
         self.addPaletteOval(SKColor.cyanColor(),   row: 2, col: 5);
+
         self.addPaletteOval(SKColor.init(red:1,green:0.75,blue:0.82,alpha:1), row: 2, col: 6);
     }
 
@@ -94,8 +95,9 @@ class GameScene: SKScene {
                                        size: 50, location: CGPoint(x: sceneWidth * 0.15, y: sceneHeight - 75))
         self.addChild(self.additiveMode)
         self.additiveMode.active = true
+        self.mode = .Additive
 
-        self.subtractiveMode = IconButton(icon: "-", label: "Subtractive",
+        self.subtractiveMode = IconButton(icon: "HSV", label: "Subtractive",
                                           size: 50, location: CGPoint(x: sceneWidth * 0.4, y: sceneHeight - 75))
         self.addChild(self.subtractiveMode)
 
@@ -116,6 +118,13 @@ class GameScene: SKScene {
         self.blendLabel.fontName = "HelveticaNeue"
         self.blendLabel.fontColor = SKColor.blackColor();
         self.addChild(self.blendLabel);
+
+        self.hsvLabel = SKLabelNode(text: "Hue Sat Val");
+        self.hsvLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75 - self.countLabel.frame.height * 2);
+        self.hsvLabel.fontSize = 16;
+        self.hsvLabel.fontName = "HelveticaNeue"
+        self.hsvLabel.fontColor = SKColor.blackColor();
+        self.addChild(self.hsvLabel);
         
         self.updateStatus();
     }
@@ -190,46 +199,11 @@ class GameScene: SKScene {
     }
     
     func updateCanvas() {
-        var newRed: CGFloat = 0;
-        var newGreen: CGFloat = 0;
-        var newBlue: CGFloat = 0;
-
-        if (self.colors.count > 0) {
-            if (self.mode == Mode.Additive) {
-                for color in self.colors {
-                    var red: CGFloat = 0
-                    var green: CGFloat = 0
-                    var blue: CGFloat = 0;
-                    color.getRed(&red, green: &green, blue: &blue, alpha: nil);
-                    
-                    newRed += red;
-                    newGreen += green;
-                    newBlue += blue;
-                }
-                
-                newRed = newRed / CGFloat(self.colors.count);
-                newGreen = newGreen / CGFloat(self.colors.count);
-                newBlue = newBlue / CGFloat(self.colors.count);
-            } else {
-                newRed = 1.0;
-                newGreen = 1.0;
-                newBlue = 1.0;
-                
-                for color in self.colors {
-                    var red: CGFloat = 0
-                    var green: CGFloat = 0
-                    var blue: CGFloat = 0;
-                    color.getRed(&red, green: &green, blue: &blue, alpha: nil);
-                
-                    newRed = newRed * red;
-                    newGreen = newGreen * green;
-                    newBlue = newBlue * blue;
-                }
-            }
+        if (self.mode == .Additive) {
+            self.currentColor = ColorUtils.rgbBlend(self.colors)
+        } else {
+            self.currentColor = ColorUtils.hsvBlend(self.colors)
         }
-
-        print("update currentColor \(self.mode) \(newRed) \(newGreen) \(newBlue)")
-        self.currentColor = SKColor.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0);
         self.updateStatus();
         self.canvas.fillColor = self.currentColor;
     }
@@ -238,13 +212,19 @@ class GameScene: SKScene {
         var red: CGFloat = 0.0;
         var green: CGFloat = 0.0;
         var blue: CGFloat = 0.0;
+
+        var hue: CGFloat = 0.0;
+        var sat: CGFloat = 0.0;
+        var val: CGFloat = 0.0;
         
         if (self.currentColor != nil) {
             self.currentColor.getRed(&red, green: &green, blue: &blue, alpha: nil);
+            self.currentColor.getHue(&hue, saturation: &sat, brightness: &val, alpha: nil)
         }
         
         self.countLabel.text = "Mixed \(self.colors.count) color(s):";
         self.blendLabel.text = "Red \(Int(red*100))% Green \(Int(green*100))% Blue \(Int(blue*100))%";
+        self.hsvLabel.text = "Hue \(Int(hue*100)) Sat \(Int(sat*100))% Brightness \(Int(val*100))%";
     }
    
     override func update(currentTime: CFTimeInterval) {

@@ -19,6 +19,7 @@
 		D72271451CF6023500EE4770 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271441CF6023500EE4770 /* IconButton.swift */; };
 		D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271461CF62AD200EE4770 /* ResetButton.swift */; };
 		D72271491CF62C2D00EE4770 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271481CF62C2D00EE4770 /* Constants.swift */; };
+		D722714B1CF6356000EE4770 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722714A1CF6356000EE4770 /* ColorUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		D72271441CF6023500EE4770 /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		D72271461CF62AD200EE4770 /* ResetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		D72271481CF62C2D00EE4770 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D722714A1CF6356000EE4770 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				D70F06C51CBDC1E800581E76 /* AppDelegate.swift */,
 				D70F06C71CBDC1E800581E76 /* GameScene.sks */,
 				D70F06C91CBDC1E800581E76 /* GameScene.swift */,
+				D722714A1CF6356000EE4770 /* ColorUtils.swift */,
 				D72271441CF6023500EE4770 /* IconButton.swift */,
 				D72271481CF62C2D00EE4770 /* Constants.swift */,
 				D72271461CF62AD200EE4770 /* ResetButton.swift */,
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72271451CF6023500EE4770 /* IconButton.swift in Sources */,
+				D722714B1CF6356000EE4770 /* ColorUtils.swift in Sources */,
 				D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */,
 				D70F06CA1CBDC1E800581E76 /* GameScene.swift in Sources */,
 				D70F06CC1CBDC1E800581E76 /* GameViewController.swift in Sources */,
