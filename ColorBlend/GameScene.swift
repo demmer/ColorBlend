@@ -5,6 +5,12 @@
 //  Created by Michael Demmer on 4/12/16.
 //  Copyright (c) 2016 Michael Demmer. All rights reserved.
 //
+//
+// TODO:
+// - Add counts for each color in the palette
+// - Rearrange so the controls are on the bottom
+// - Add animation when the palette is touched
+// - Add Magenta or replace
 
 import SpriteKit;
 
@@ -34,44 +40,54 @@ class GameScene: SKScene {
     var currentColor: SKColor!;
     var dragger: SKShapeNode!;
     var resetButton: ResetButton!;
-    var countLabel, blendLabel, hsvLabel: SKLabelNode!;
+    var colorLabel, countLabel, blendLabel, hsvLabel: SKLabelNode!;
     var additiveMode, subtractiveMode: IconButton!;
     
     func addPaletteOval(color: UIColor, row: CGFloat, col: CGFloat) {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
 
-        let width = sceneWidth / 8;
+        let width = sceneWidth / 9;
         let height = 1.3 * width;
         let size = CGSize(width: width, height: height);
 
-        let x = col * (sceneWidth / 6.0) - (sceneWidth / 12.0);
-        let y = height * 2.5 - (row * 1.2 * height) + (height / 2);
-        
-        let location = CGPoint(x: x, y: y)
+        let x = col * (sceneWidth / 7.0) - (sceneWidth / 14.0);
+        let y = 4 * height - (1.5 * row * height);
         
         let shape = SKShapeNode.init(ellipseOfSize: size)
         shape.strokeColor = SKColor.blackColor();
         shape.fillColor = color;
-        shape.position = location;
+        shape.position = CGPoint(x: x, y: y);
 
         self.palette.insert(shape)
         self.addChild(shape)
+        
+        let label = SKLabelNode(text: "")
+        label.position = CGPoint(x: x, y: y - height / 2 - 18)
+        label.fontName = Constants.LabelFont
+        label.fontSize = 16
+        label.verticalAlignmentMode = .Bottom
+        label.fontColor = SKColor.blackColor()
+        self.addChild(label)
     }
  
     func addPalette() {
+        let pinkColor = SKColor.init(red:1,green:0.75,blue:0.82,alpha:1)
+        
         self.addPaletteOval(SKColor.redColor(),    row: 1, col: 1);
         self.addPaletteOval(SKColor.greenColor(),  row: 1, col: 2);
         self.addPaletteOval(SKColor.blueColor(),   row: 1, col: 3);
-        self.addPaletteOval(SKColor.yellowColor(), row: 1, col: 4);
-        self.addPaletteOval(SKColor.whiteColor(),  row: 1, col: 5);
-        self.addPaletteOval(SKColor.blackColor(),  row: 1, col: 6);
-        self.addPaletteOval(SKColor.purpleColor(), row: 2, col: 1);
-        self.addPaletteOval(SKColor.brownColor(),  row: 2, col: 2);
-        self.addPaletteOval(SKColor.orangeColor(), row: 2, col: 3);
-        self.addPaletteOval(SKColor.grayColor(),   row: 2, col: 4);
-        self.addPaletteOval(SKColor.cyanColor(),   row: 2, col: 5);
+        self.addPaletteOval(SKColor.cyanColor(),   row: 1, col: 4);
+        self.addPaletteOval(SKColor.magentaColor(),row: 1, col: 5);
+        self.addPaletteOval(SKColor.yellowColor(), row: 1, col: 6);
+        self.addPaletteOval(SKColor.whiteColor(),  row: 1, col: 7);
 
-        self.addPaletteOval(SKColor.init(red:1,green:0.75,blue:0.82,alpha:1), row: 2, col: 6);
+        self.addPaletteOval(SKColor.purpleColor(),    row: 2, col: 1);
+        self.addPaletteOval(SKColor.brownColor(),     row: 2, col: 2);
+        self.addPaletteOval(SKColor.orangeColor(),    row: 2, col: 3);
+        self.addPaletteOval(pinkColor,                row: 2, col: 4);
+        self.addPaletteOval(SKColor.darkGrayColor(),  row: 2, col: 5);
+        self.addPaletteOval(SKColor.lightGrayColor(), row: 2, col: 6);
+        self.addPaletteOval(SKColor.blackColor(),     row: 2, col: 7);
     }
 
     func addCanvas() {
@@ -91,11 +107,10 @@ class GameScene: SKScene {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
         let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
 
+        var group = SKNode();
         self.additiveMode = IconButton(icon: "+", label: "Additive",
                                        size: 50, location: CGPoint(x: sceneWidth * 0.15, y: sceneHeight - 75))
         self.addChild(self.additiveMode)
-        self.additiveMode.active = true
-        self.mode = .Additive
 
         self.subtractiveMode = IconButton(icon: "HSV", label: "Subtractive",
                                           size: 50, location: CGPoint(x: sceneWidth * 0.4, y: sceneHeight - 75))
@@ -104,6 +119,18 @@ class GameScene: SKScene {
         self.resetButton = ResetButton(size: 50, location: CGPoint(x: sceneWidth * 0.75, y: sceneHeight - 75))
         self.addChild(self.resetButton);
         
+    }
+    
+    func addStatus() {
+        let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
+        let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
+
+        self.colorLabel = SKLabelNode(text: "None");
+        self.colorLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.95);
+        self.colorLabel.fontSize = 18;
+        self.colorLabel.fontName = "HelveticaNeue"
+        self.colorLabel.fontColor = SKColor.blackColor();
+        self.addChild(self.colorLabel);
 
         self.countLabel = SKLabelNode(text: "Mixing");
         self.countLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75);
@@ -134,6 +161,10 @@ class GameScene: SKScene {
             self.addPalette();
             self.addCanvas();
             self.addControls();
+            self.addStatus();
+            
+            self.mode = .Additive
+            self.additiveMode.active = true
         }
         self.contentCreated = true;
     }
@@ -220,6 +251,9 @@ class GameScene: SKScene {
         if (self.currentColor != nil) {
             self.currentColor.getRed(&red, green: &green, blue: &blue, alpha: nil);
             self.currentColor.getHue(&hue, saturation: &sat, brightness: &val, alpha: nil)
+            self.colorLabel.text = ColorName.closestMatch(self.currentColor)
+        } else {
+            self.colorLabel.text = "";
         }
         
         self.countLabel.text = "Mixed \(self.colors.count) color(s):";

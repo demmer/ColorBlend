@@ -32,8 +32,8 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D70F06D91CBDC1E800581E76"
-               BuildableName = "ColorBlend.xctest"
+               BlueprintIdentifier = "D7E1EF6C1CF69DCC00443610"
+               BuildableName = "ColorBlendTests.xctest"
                BlueprintName = "ColorBlendTests"
                ReferencedContainer = "container:ColorBlend.xcodeproj">
             </BuildableReference>

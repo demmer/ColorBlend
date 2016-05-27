@@ -1,5 +1,5 @@
 //
-//  Color_BlendUITests.swift
+//  ColorBlendUITests.swift
 //  ColorBlendUITests
 //
 //  Created by Michael Demmer on 4/12/16.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Color_BlendUITests: XCTestCase {
+class ColorBlendUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

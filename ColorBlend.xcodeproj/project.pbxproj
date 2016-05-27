@@ -14,23 +14,16 @@
 		D70F06CF1CBDC1E800581E76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70F06CD1CBDC1E800581E76 /* Main.storyboard */; };
 		D70F06D11CBDC1E800581E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70F06D01CBDC1E800581E76 /* Assets.xcassets */; };
 		D70F06D41CBDC1E800581E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70F06D21CBDC1E800581E76 /* LaunchScreen.storyboard */; };
-		D70F06DF1CBDC1E800581E76 /* Color_BlendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06DE1CBDC1E800581E76 /* Color_BlendTests.swift */; };
-		D70F06EA1CBDC1E800581E76 /* Color_BlendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */; };
 		D72271451CF6023500EE4770 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271441CF6023500EE4770 /* IconButton.swift */; };
 		D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271461CF62AD200EE4770 /* ResetButton.swift */; };
 		D72271491CF62C2D00EE4770 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271481CF62C2D00EE4770 /* Constants.swift */; };
 		D722714B1CF6356000EE4770 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722714A1CF6356000EE4770 /* ColorUtils.swift */; };
+		D7E1EF701CF69DCC00443610 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EF6F1CF69DCC00443610 /* ColorUtilsTests.swift */; };
+		D7E1EF781CF6A1EE00443610 /* ColorName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EF771CF6A1EE00443610 /* ColorName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D70F06DB1CBDC1E800581E76 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D70F06BA1CBDC1E800581E76 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D70F06C11CBDC1E800581E76;
-			remoteInfo = ColorBlend;
-		};
-		D70F06E61CBDC1E800581E76 /* PBXContainerItemProxy */ = {
+		D7E1EF721CF69DCC00443610 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D70F06BA1CBDC1E800581E76 /* Project object */;
 			proxyType = 1;
@@ -49,16 +42,14 @@
 		D70F06D01CBDC1E800581E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D70F06D31CBDC1E800581E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D70F06D51CBDC1E800581E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D70F06DA1CBDC1E800581E76 /* ColorBlend.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlend.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D70F06DE1CBDC1E800581E76 /* Color_BlendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_BlendTests.swift; sourceTree = "<group>"; };
-		D70F06E01CBDC1E800581E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlend.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_BlendUITests.swift; sourceTree = "<group>"; };
-		D70F06EB1CBDC1E800581E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D72271441CF6023500EE4770 /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		D72271461CF62AD200EE4770 /* ResetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		D72271481CF62C2D00EE4770 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D722714A1CF6356000EE4770 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		D7E1EF6D1CF69DCC00443610 /* ColorBlendTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7E1EF6F1CF69DCC00443610 /* ColorUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtilsTests.swift; sourceTree = "<group>"; };
+		D7E1EF711CF69DCC00443610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7E1EF771CF6A1EE00443610 /* ColorName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,14 +60,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D70F06D71CBDC1E800581E76 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D70F06E21CBDC1E800581E76 /* Frameworks */ = {
+		D7E1EF6A1CF69DCC00443610 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -90,8 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				D70F06C41CBDC1E800581E76 /* ColorBlend */,
-				D70F06DD1CBDC1E800581E76 /* ColorBlendTests */,
-				D70F06E81CBDC1E800581E76 /* ColorBlendUITests */,
+				D7E1EF6E1CF69DCC00443610 /* ColorBlendTests */,
 				D70F06C31CBDC1E800581E76 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,8 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				D70F06C21CBDC1E800581E76 /* ColorBlend.app */,
-				D70F06DA1CBDC1E800581E76 /* ColorBlend.xctest */,
-				D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */,
+				D7E1EF6D1CF69DCC00443610 /* ColorBlendTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +95,7 @@
 				D70F06C71CBDC1E800581E76 /* GameScene.sks */,
 				D70F06C91CBDC1E800581E76 /* GameScene.swift */,
 				D722714A1CF6356000EE4770 /* ColorUtils.swift */,
+				D7E1EF771CF6A1EE00443610 /* ColorName.swift */,
 				D72271441CF6023500EE4770 /* IconButton.swift */,
 				D72271481CF62C2D00EE4770 /* Constants.swift */,
 				D72271461CF62AD200EE4770 /* ResetButton.swift */,
@@ -125,22 +108,13 @@
 			path = ColorBlend;
 			sourceTree = "<group>";
 		};
-		D70F06DD1CBDC1E800581E76 /* ColorBlendTests */ = {
+		D7E1EF6E1CF69DCC00443610 /* ColorBlendTests */ = {
 			isa = PBXGroup;
 			children = (
-				D70F06DE1CBDC1E800581E76 /* Color_BlendTests.swift */,
-				D70F06E01CBDC1E800581E76 /* Info.plist */,
+				D7E1EF6F1CF69DCC00443610 /* ColorUtilsTests.swift */,
+				D7E1EF711CF69DCC00443610 /* Info.plist */,
 			);
 			path = ColorBlendTests;
-			sourceTree = "<group>";
-		};
-		D70F06E81CBDC1E800581E76 /* ColorBlendUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D70F06E91CBDC1E800581E76 /* Color_BlendUITests.swift */,
-				D70F06EB1CBDC1E800581E76 /* Info.plist */,
-			);
-			path = ColorBlendUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,41 +137,23 @@
 			productReference = D70F06C21CBDC1E800581E76 /* ColorBlend.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D70F06D91CBDC1E800581E76 /* ColorBlendTests */ = {
+		D7E1EF6C1CF69DCC00443610 /* ColorBlendTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D70F06F11CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendTests" */;
+			buildConfigurationList = D7E1EF741CF69DCC00443610 /* Build configuration list for PBXNativeTarget "ColorBlendTests" */;
 			buildPhases = (
-				D70F06D61CBDC1E800581E76 /* Sources */,
-				D70F06D71CBDC1E800581E76 /* Frameworks */,
-				D70F06D81CBDC1E800581E76 /* Resources */,
+				D7E1EF691CF69DCC00443610 /* Sources */,
+				D7E1EF6A1CF69DCC00443610 /* Frameworks */,
+				D7E1EF6B1CF69DCC00443610 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D70F06DC1CBDC1E800581E76 /* PBXTargetDependency */,
+				D7E1EF731CF69DCC00443610 /* PBXTargetDependency */,
 			);
 			name = ColorBlendTests;
 			productName = ColorBlendTests;
-			productReference = D70F06DA1CBDC1E800581E76 /* ColorBlend.xctest */;
+			productReference = D7E1EF6D1CF69DCC00443610 /* ColorBlendTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D70F06E41CBDC1E800581E76 /* ColorBlendUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D70F06F41CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendUITests" */;
-			buildPhases = (
-				D70F06E11CBDC1E800581E76 /* Sources */,
-				D70F06E21CBDC1E800581E76 /* Frameworks */,
-				D70F06E31CBDC1E800581E76 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D70F06E71CBDC1E800581E76 /* PBXTargetDependency */,
-			);
-			name = ColorBlendUITests;
-			productName = ColorBlendUITests;
-			productReference = D70F06E51CBDC1E800581E76 /* ColorBlend.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -205,7 +161,7 @@
 		D70F06BA1CBDC1E800581E76 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Michael Demmer";
 				TargetAttributes = {
@@ -213,12 +169,9 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = HSF5B9Y9RF;
 					};
-					D70F06D91CBDC1E800581E76 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = D70F06C11CBDC1E800581E76;
-					};
-					D70F06E41CBDC1E800581E76 = {
-						CreatedOnToolsVersion = 7.2;
+					D7E1EF6C1CF69DCC00443610 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = HSF5B9Y9RF;
 						TestTargetID = D70F06C11CBDC1E800581E76;
 					};
 				};
@@ -237,8 +190,7 @@
 			projectRoot = "";
 			targets = (
 				D70F06C11CBDC1E800581E76 /* ColorBlend */,
-				D70F06D91CBDC1E800581E76 /* ColorBlendTests */,
-				D70F06E41CBDC1E800581E76 /* ColorBlendUITests */,
+				D7E1EF6C1CF69DCC00443610 /* ColorBlendTests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,14 +207,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D70F06D81CBDC1E800581E76 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D70F06E31CBDC1E800581E76 /* Resources */ = {
+		D7E1EF6B1CF69DCC00443610 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -282,38 +227,26 @@
 				D70F06CA1CBDC1E800581E76 /* GameScene.swift in Sources */,
 				D70F06CC1CBDC1E800581E76 /* GameViewController.swift in Sources */,
 				D70F06C61CBDC1E800581E76 /* AppDelegate.swift in Sources */,
+				D7E1EF781CF6A1EE00443610 /* ColorName.swift in Sources */,
 				D72271491CF62C2D00EE4770 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D70F06D61CBDC1E800581E76 /* Sources */ = {
+		D7E1EF691CF69DCC00443610 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70F06DF1CBDC1E800581E76 /* Color_BlendTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D70F06E11CBDC1E800581E76 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D70F06EA1CBDC1E800581E76 /* Color_BlendUITests.swift in Sources */,
+				D7E1EF701CF69DCC00443610 /* ColorUtilsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D70F06DC1CBDC1E800581E76 /* PBXTargetDependency */ = {
+		D7E1EF731CF69DCC00443610 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D70F06C11CBDC1E800581E76 /* ColorBlend */;
-			targetProxy = D70F06DB1CBDC1E800581E76 /* PBXContainerItemProxy */;
-		};
-		D70F06E71CBDC1E800581E76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D70F06C11CBDC1E800581E76 /* ColorBlend */;
-			targetProxy = D70F06E61CBDC1E800581E76 /* PBXContainerItemProxy */;
+			targetProxy = D7E1EF721CF69DCC00443610 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,53 +383,32 @@
 			};
 			name = Release;
 		};
-		D70F06F21CBDC1E800581E76 /* Debug */ = {
+		D7E1EF751CF69DCC00443610 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = ColorBlendTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendTests";
-				PRODUCT_NAME = ColorBlend;
+				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlendTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorBlend.app/ColorBlend";
 			};
 			name = Debug;
 		};
-		D70F06F31CBDC1E800581E76 /* Release */ = {
+		D7E1EF761CF69DCC00443610 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
 				INFOPLIST_FILE = ColorBlendTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendTests";
-				PRODUCT_NAME = ColorBlend;
+				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlendTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorBlend.app/ColorBlend";
-			};
-			name = Release;
-		};
-		D70F06F51CBDC1E800581E76 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = ColorBlendUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendUITests";
-				PRODUCT_NAME = ColorBlend;
-				TEST_TARGET_NAME = ColorBlend;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		D70F06F61CBDC1E800581E76 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ColorBlendUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Demmer.Color-BlendUITests";
-				PRODUCT_NAME = ColorBlend;
-				TEST_TARGET_NAME = ColorBlend;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -521,20 +433,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D70F06F11CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendTests" */ = {
+		D7E1EF741CF69DCC00443610 /* Build configuration list for PBXNativeTarget "ColorBlendTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D70F06F21CBDC1E800581E76 /* Debug */,
-				D70F06F31CBDC1E800581E76 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D70F06F41CBDC1E800581E76 /* Build configuration list for PBXNativeTarget "ColorBlendUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D70F06F51CBDC1E800581E76 /* Debug */,
-				D70F06F61CBDC1E800581E76 /* Release */,
+				D7E1EF751CF69DCC00443610 /* Debug */,
+				D7E1EF761CF69DCC00443610 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
