@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D70F06C61CBDC1E800581E76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06C51CBDC1E800581E76 /* AppDelegate.swift */; };
-		D70F06C81CBDC1E800581E76 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D70F06C71CBDC1E800581E76 /* GameScene.sks */; };
-		D70F06CA1CBDC1E800581E76 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06C91CBDC1E800581E76 /* GameScene.swift */; };
-		D70F06CC1CBDC1E800581E76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06CB1CBDC1E800581E76 /* GameViewController.swift */; };
+		D70F06C81CBDC1E800581E76 /* ColorBlend.sks in Resources */ = {isa = PBXBuildFile; fileRef = D70F06C71CBDC1E800581E76 /* ColorBlend.sks */; };
+		D70F06CA1CBDC1E800581E76 /* ColorBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06C91CBDC1E800581E76 /* ColorBlend.swift */; };
+		D70F06CC1CBDC1E800581E76 /* ColorBlendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F06CB1CBDC1E800581E76 /* ColorBlendViewController.swift */; };
 		D70F06CF1CBDC1E800581E76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70F06CD1CBDC1E800581E76 /* Main.storyboard */; };
 		D70F06D11CBDC1E800581E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70F06D01CBDC1E800581E76 /* Assets.xcassets */; };
 		D70F06D41CBDC1E800581E76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70F06D21CBDC1E800581E76 /* LaunchScreen.storyboard */; };
@@ -35,9 +35,9 @@
 /* Begin PBXFileReference section */
 		D70F06C21CBDC1E800581E76 /* ColorBlend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorBlend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70F06C51CBDC1E800581E76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D70F06C71CBDC1E800581E76 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		D70F06C91CBDC1E800581E76 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		D70F06CB1CBDC1E800581E76 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D70F06C71CBDC1E800581E76 /* ColorBlend.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ColorBlend.sks; sourceTree = "<group>"; };
+		D70F06C91CBDC1E800581E76 /* ColorBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlend.swift; sourceTree = "<group>"; };
+		D70F06CB1CBDC1E800581E76 /* ColorBlendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlendViewController.swift; sourceTree = "<group>"; };
 		D70F06CE1CBDC1E800581E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D70F06D01CBDC1E800581E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D70F06D31CBDC1E800581E76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,14 +92,14 @@
 			isa = PBXGroup;
 			children = (
 				D70F06C51CBDC1E800581E76 /* AppDelegate.swift */,
-				D70F06C71CBDC1E800581E76 /* GameScene.sks */,
-				D70F06C91CBDC1E800581E76 /* GameScene.swift */,
+				D70F06C71CBDC1E800581E76 /* ColorBlend.sks */,
+				D70F06C91CBDC1E800581E76 /* ColorBlend.swift */,
 				D722714A1CF6356000EE4770 /* ColorUtils.swift */,
 				D7E1EF771CF6A1EE00443610 /* ColorName.swift */,
 				D72271441CF6023500EE4770 /* IconButton.swift */,
 				D72271481CF62C2D00EE4770 /* Constants.swift */,
 				D72271461CF62AD200EE4770 /* ResetButton.swift */,
-				D70F06CB1CBDC1E800581E76 /* GameViewController.swift */,
+				D70F06CB1CBDC1E800581E76 /* ColorBlendViewController.swift */,
 				D70F06CD1CBDC1E800581E76 /* Main.storyboard */,
 				D70F06D01CBDC1E800581E76 /* Assets.xcassets */,
 				D70F06D21CBDC1E800581E76 /* LaunchScreen.storyboard */,
@@ -200,7 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70F06C81CBDC1E800581E76 /* GameScene.sks in Resources */,
+				D70F06C81CBDC1E800581E76 /* ColorBlend.sks in Resources */,
 				D70F06D41CBDC1E800581E76 /* LaunchScreen.storyboard in Resources */,
 				D70F06D11CBDC1E800581E76 /* Assets.xcassets in Resources */,
 				D70F06CF1CBDC1E800581E76 /* Main.storyboard in Resources */,
@@ -224,8 +224,8 @@
 				D72271451CF6023500EE4770 /* IconButton.swift in Sources */,
 				D722714B1CF6356000EE4770 /* ColorUtils.swift in Sources */,
 				D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */,
-				D70F06CA1CBDC1E800581E76 /* GameScene.swift in Sources */,
-				D70F06CC1CBDC1E800581E76 /* GameViewController.swift in Sources */,
+				D70F06CA1CBDC1E800581E76 /* ColorBlend.swift in Sources */,
+				D70F06CC1CBDC1E800581E76 /* ColorBlendViewController.swift in Sources */,
 				D70F06C61CBDC1E800581E76 /* AppDelegate.swift in Sources */,
 				D7E1EF781CF6A1EE00443610 /* ColorName.swift in Sources */,
 				D72271491CF62C2D00EE4770 /* Constants.swift in Sources */,

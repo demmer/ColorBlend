@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
 
-        if let scene = GameScene(fileNamed:"GameScene") {
+        if let scene = GameScene(fileNamed:"ColorBlend") {
             // Configure the view.
             let skView = self.view as! SKView
             scene.backgroundColor = SKColor.whiteColor()
