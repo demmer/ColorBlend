@@ -230,8 +230,8 @@ class GameScene: SKScene {
         if (self.dragger != nil) {
             let location = touches.first!.locationInNode(self);
             
-            let node: SKShapeNode! = self.nodeAtPoint(location) as! SKShapeNode;
-            if (node != nil && (self.canvas == node || node.fillColor == dragger.fillColor)) {
+            let node: SKShapeNode? = self.nodeAtPoint(location) as? SKShapeNode;
+            if (node != nil && (self.canvas == node || node!.fillColor == dragger.fillColor)) {
                 self.colors.append(self.dragger.fillColor)
                 self.updateCanvas();
             }
