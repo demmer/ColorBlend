@@ -20,6 +20,7 @@
 		D722714B1CF6356000EE4770 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722714A1CF6356000EE4770 /* ColorUtils.swift */; };
 		D7E1EF701CF69DCC00443610 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EF6F1CF69DCC00443610 /* ColorUtilsTests.swift */; };
 		D7E1EF781CF6A1EE00443610 /* ColorName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EF771CF6A1EE00443610 /* ColorName.swift */; };
+		D7F4E6841CFA922300742687 /* ColorLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F4E6831CFA922300742687 /* ColorLevel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D7E1EF6F1CF69DCC00443610 /* ColorUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtilsTests.swift; sourceTree = "<group>"; };
 		D7E1EF711CF69DCC00443610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7E1EF771CF6A1EE00443610 /* ColorName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorName.swift; sourceTree = "<group>"; };
+		D7F4E6831CFA922300742687 /* ColorLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorLevel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				D722714A1CF6356000EE4770 /* ColorUtils.swift */,
 				D7E1EF771CF6A1EE00443610 /* ColorName.swift */,
 				D72271441CF6023500EE4770 /* IconButton.swift */,
+				D7F4E6831CFA922300742687 /* ColorLevel.swift */,
 				D72271481CF62C2D00EE4770 /* Constants.swift */,
 				D72271461CF62AD200EE4770 /* ResetButton.swift */,
 				D70F06CB1CBDC1E800581E76 /* ColorBlendViewController.swift */,
@@ -226,6 +229,7 @@
 				D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */,
 				D70F06CA1CBDC1E800581E76 /* ColorBlend.swift in Sources */,
 				D70F06CC1CBDC1E800581E76 /* ColorBlendViewController.swift in Sources */,
+				D7F4E6841CFA922300742687 /* ColorLevel.swift in Sources */,
 				D70F06C61CBDC1E800581E76 /* AppDelegate.swift in Sources */,
 				D7E1EF781CF6A1EE00443610 /* ColorName.swift in Sources */,
 				D72271491CF62C2D00EE4770 /* Constants.swift in Sources */,

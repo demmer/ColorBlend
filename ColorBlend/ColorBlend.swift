@@ -40,8 +40,10 @@ class GameScene: SKScene {
     var currentColor: SKColor!;
     var dragger: SKShapeNode!;
     var resetButton: ResetButton!;
-    var colorLabel, countLabel, blendLabel, hsvLabel: SKLabelNode!;
+    var colorLabel, hsvLabel: SKLabelNode!;
+    var redLevel, greenLevel, blueLevel: ColorLevel!;
     var additiveMode, subtractiveMode: IconButton!;
+    var controlGroup: SKNode!;
     
     func addPaletteOval(color: UIColor, row: CGFloat, col: CGFloat) {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
@@ -98,7 +100,7 @@ class GameScene: SKScene {
         let path = CGPathCreateWithRoundedRect(CGRect(x: 0, y: 0, width: 0.8 * sceneWidth, height: 0.4 * sceneHeight),
             cornerRadius, cornerRadius, nil)
         canvas = SKShapeNode.init(path: path);
-        canvas.position = CGPoint(x: 0.1 * sceneWidth, y: 0.3 * sceneHeight)
+        canvas.position = CGPoint(x: 0.1 * sceneWidth, y: 0.4 * sceneHeight)
         canvas.strokeColor = SKColor.blackColor()
         self.addChild(canvas)
     }
@@ -107,52 +109,64 @@ class GameScene: SKScene {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
         let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
 
-        var group = SKNode();
+        let group = SKNode();
         self.additiveMode = IconButton(icon: "+", label: "Additive",
-                                       size: 50, location: CGPoint(x: sceneWidth * 0.15, y: sceneHeight - 75))
-        self.addChild(self.additiveMode)
+                                       size: 50, location: CGPoint(x: sceneWidth * 0.15, y: 0))
+        group.addChild(self.additiveMode)
 
         self.subtractiveMode = IconButton(icon: "HSV", label: "Subtractive",
-                                          size: 50, location: CGPoint(x: sceneWidth * 0.4, y: sceneHeight - 75))
-        self.addChild(self.subtractiveMode)
+                                          size: 50, location: CGPoint(x: sceneWidth * 0.4, y: 0))
+        group.addChild(self.subtractiveMode)
 
-        self.resetButton = ResetButton(size: 50, location: CGPoint(x: sceneWidth * 0.75, y: sceneHeight - 75))
-        self.addChild(self.resetButton);
+        self.resetButton = ResetButton(size: 50, location: CGPoint(x: sceneWidth * 0.75, y: 0))
+        group.addChild(self.resetButton);
         
+        group.position = CGPoint(x: 0, y: sceneHeight / 3)
+        self.controlGroup = group;
+        self.addChild(group)
     }
     
     func addStatus() {
         let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
         let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
 
-        self.colorLabel = SKLabelNode(text: "None");
-        self.colorLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.95);
+
+        let group = SKNode();
+        group.position = CGPoint(x: 0, y: sceneHeight * 0.8);
+        self.addChild(group)
+        
+        self.colorLabel = SKLabelNode(text: "");
+        let top = sceneHeight * 0.2
+        self.colorLabel.position = CGPoint(x: sceneWidth / 2, y: top - 28);
         self.colorLabel.fontSize = 18;
-        self.colorLabel.fontName = "HelveticaNeue"
+        self.colorLabel.fontName = Constants.LabelFont
         self.colorLabel.fontColor = SKColor.blackColor();
-        self.addChild(self.colorLabel);
-
-        self.countLabel = SKLabelNode(text: "Mixing");
-        self.countLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75);
-        self.countLabel.fontSize = 16;
-        self.countLabel.fontName = "HelveticaNeue"
-        self.countLabel.fontColor = SKColor.blackColor();
-        self.addChild(self.countLabel);
-
-        self.blendLabel = SKLabelNode(text: "Red Green Blue");
-        self.blendLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75 - self.countLabel.frame.height);
-        self.blendLabel.fontSize = 16;
-        self.blendLabel.fontName = "HelveticaNeue"
-        self.blendLabel.fontColor = SKColor.blackColor();
-        self.addChild(self.blendLabel);
+        group.addChild(self.colorLabel);
+        
+        let levelWidth = 20;
+        let levelHeight = 50;
+        
+        self.redLevel = ColorLevel(color: SKColor.redColor(), width: levelWidth, height: levelHeight);
+        let levelY = self.colorLabel.frame.minY - self.redLevel.calculateAccumulatedFrame().height - 20
+        self.redLevel.position = CGPoint(x: sceneWidth / 10, y: levelY)
+        group.addChild(redLevel)
+        
+        self.greenLevel = ColorLevel(color: SKColor.greenColor(), width: levelWidth, height: levelHeight);
+        self.greenLevel.position = CGPoint(x: sceneWidth / 10 + 35, y: levelY)
+        group.addChild(greenLevel)
+        
+        self.blueLevel = ColorLevel(color: SKColor.blueColor(), width: levelWidth, height: levelHeight);
+        self.blueLevel.position = CGPoint(x: sceneWidth / 10 + 70, y: levelY)
+        group.addChild(blueLevel)
+        
 
         self.hsvLabel = SKLabelNode(text: "Hue Sat Val");
-        self.hsvLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75 - self.countLabel.frame.height * 2);
+        self.hsvLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75 - self.colorLabel.frame.height * 2);
         self.hsvLabel.fontSize = 16;
         self.hsvLabel.fontName = "HelveticaNeue"
         self.hsvLabel.fontColor = SKColor.blackColor();
-        self.addChild(self.hsvLabel);
-        
+//        self.addChild(self.hsvLabel);
+
         self.updateStatus();
     }
     
@@ -178,23 +192,26 @@ class GameScene: SKScene {
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first;
-        let location = touch!.locationInNode(self)
+        var location = touch!.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        if (self.additiveMode.containsPoint(location)) {
-            self.mode = .Additive;
-            self.additiveMode.active = true;
-            self.subtractiveMode.active = false;
-            self.updateCanvas()
-
-        } else if (self.subtractiveMode.containsPoint(location)) {
-            self.mode = .Subtractive
-            self.additiveMode.active = false;
-            self.subtractiveMode.active = true;
-            self.updateCanvas()
-
-        } else if (self.resetButton.containsPoint(location)) {
-            self.reset();
+        if (self.controlGroup.containsPoint(location)) {
+            location = self.controlGroup.convertPoint(location, fromNode: self)
+            if (self.additiveMode.containsPoint(location)) {
+                self.mode = .Additive;
+                self.additiveMode.active = true;
+                self.subtractiveMode.active = false;
+                self.updateCanvas()
+                
+            } else if (self.subtractiveMode.containsPoint(location)) {
+                self.mode = .Subtractive
+                self.additiveMode.active = false;
+                self.subtractiveMode.active = true;
+                self.updateCanvas()
+                
+            } else if (self.resetButton.containsPoint(location)) {
+                self.reset();
+            }
 
         } else if (self.palette.contains(node)) {
             self.removeDragger();
@@ -253,11 +270,12 @@ class GameScene: SKScene {
             self.currentColor.getHue(&hue, saturation: &sat, brightness: &val, alpha: nil)
             self.colorLabel.text = ColorName.closestMatch(self.currentColor)
         } else {
-            self.colorLabel.text = "";
+            self.colorLabel.text = "(Touch Colors To Start Blending)";
         }
         
-        self.countLabel.text = "Mixed \(self.colors.count) color(s):";
-        self.blendLabel.text = "Red \(Int(red*100))% Green \(Int(green*100))% Blue \(Int(blue*100))%";
+        self.redLevel.level = red;
+        self.greenLevel.level = green;
+        self.blueLevel.level = blue;
         self.hsvLabel.text = "Hue \(Int(hue*100)) Sat \(Int(sat*100))% Brightness \(Int(val*100))%";
     }
    
