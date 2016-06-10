@@ -23,7 +23,7 @@ class ColorLevel: SKNode {
         }
     }
     
-    init(color: SKColor, width: Int, height: Int) {
+    init(color: SKColor, width: CGFloat, height: CGFloat) {
         self.color = color;
         
         levelLabel = SKLabelNode(text: "0%")
@@ -44,6 +44,10 @@ class ColorLevel: SKNode {
         self.addChild(self.levelLabel);
         self.addChild(self.outline);
         self.update()
+        
+        let frame = self.calculateAccumulatedFrame()
+        self.yScale = height / frame.height
+        self.xScale = width / frame.width
     }
 
     func update() {

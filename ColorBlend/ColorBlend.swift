@@ -42,6 +42,7 @@ class GameScene: SKScene {
     var resetButton: ResetButton!;
     var colorLabel, hsvLabel: SKLabelNode!;
     var redLevel, greenLevel, blueLevel: ColorLevel!;
+    var colorWheel: ColorWheel!;
     var additiveMode, subtractiveMode: IconButton!;
     var controlGroup: SKNode!;
     
@@ -143,22 +144,27 @@ class GameScene: SKScene {
         self.colorLabel.fontColor = SKColor.blackColor();
         group.addChild(self.colorLabel);
         
-        let levelWidth = 20;
-        let levelHeight = 50;
+        let levelWidth: CGFloat = 35;
+        let levelHeight: CGFloat = 70;
         
         self.redLevel = ColorLevel(color: SKColor.redColor(), width: levelWidth, height: levelHeight);
+        self.greenLevel = ColorLevel(color: SKColor.greenColor(), width: levelWidth, height: levelHeight);
+        self.blueLevel = ColorLevel(color: SKColor.blueColor(), width: levelWidth, height: levelHeight);
+
         let levelY = self.colorLabel.frame.minY - self.redLevel.calculateAccumulatedFrame().height - 20
-        self.redLevel.position = CGPoint(x: sceneWidth / 10, y: levelY)
+
+        self.redLevel.position = CGPoint(x: sceneWidth * 0.15, y: levelY)
         group.addChild(redLevel)
         
-        self.greenLevel = ColorLevel(color: SKColor.greenColor(), width: levelWidth, height: levelHeight);
-        self.greenLevel.position = CGPoint(x: sceneWidth / 10 + 35, y: levelY)
+        self.greenLevel.position = CGPoint(x: sceneWidth * 0.15 + 35, y: levelY)
         group.addChild(greenLevel)
         
-        self.blueLevel = ColorLevel(color: SKColor.blueColor(), width: levelWidth, height: levelHeight);
-        self.blueLevel.position = CGPoint(x: sceneWidth / 10 + 70, y: levelY)
+        self.blueLevel.position = CGPoint(x: sceneWidth * 0.15 + 70, y: levelY)
         group.addChild(blueLevel)
         
+        colorWheel = ColorWheel(size: 70)
+        colorWheel.position = CGPoint(x: sceneWidth * 0.6, y: levelY)
+        group.addChild(colorWheel)
 
         self.hsvLabel = SKLabelNode(text: "Hue Sat Val");
         self.hsvLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75 - self.colorLabel.frame.height * 2);
@@ -276,7 +282,8 @@ class GameScene: SKScene {
         self.redLevel.level = red;
         self.greenLevel.level = green;
         self.blueLevel.level = blue;
-        self.hsvLabel.text = "Hue \(Int(hue*100)) Sat \(Int(sat*100))% Brightness \(Int(val*100))%";
+        
+        self.colorWheel.hue = hue;
     }
    
     override func update(currentTime: CFTimeInterval) {
