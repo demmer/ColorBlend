@@ -40,7 +40,7 @@ class GameScene: SKScene {
     var currentColor: SKColor!;
     var dragger: SKShapeNode!;
     var resetButton: ResetButton!;
-    var colorLabel, hsvLabel: SKLabelNode!;
+    var colorLabel: SKLabelNode!;
     var redLevel, greenLevel, blueLevel: ColorLevel!;
     var colorWheel: ColorWheel!;
     var additiveMode, subtractiveMode: IconButton!;
@@ -165,13 +165,6 @@ class GameScene: SKScene {
         colorWheel = ColorWheel(size: 70)
         colorWheel.position = CGPoint(x: sceneWidth * 0.6, y: levelY)
         group.addChild(colorWheel)
-
-        self.hsvLabel = SKLabelNode(text: "Hue Sat Val");
-        self.hsvLabel.position = CGPoint(x: sceneWidth / 2, y: sceneHeight * 0.75 - self.colorLabel.frame.height * 2);
-        self.hsvLabel.fontSize = 16;
-        self.hsvLabel.fontName = "HelveticaNeue"
-        self.hsvLabel.fontColor = SKColor.blackColor();
-//        self.addChild(self.hsvLabel);
 
         self.updateStatus();
     }
