@@ -36,9 +36,11 @@ class GameScene: SKScene {
     var contentCreated: Bool = false;
     var colors: Array<SKColor> = [];
     var palette: Set<SKNode> = [];
+    var counts: Dictionary<SKColor, SKLabelNode> = [:];
     var canvas: SKShapeNode!;
     var currentColor: SKColor!;
     var dragger: SKShapeNode!;
+    var dragColor: SKColor!;
     var resetButton: ResetButton!;
     var colorLabel: SKLabelNode!;
     var redLevel, greenLevel, blueLevel, satLevel, valLevel: ColorLevel!;
@@ -70,11 +72,14 @@ class GameScene: SKScene {
         self.addChild(shape)
         
         let label = SKLabelNode(text: "")
-        label.position = CGPoint(x: x, y: y - height / 2 - 18)
+        label.position = CGPoint(x: x, y: y - height / 2 - 20)
         label.fontName = Constants.LabelFont
-        label.fontSize = 16
+        label.fontSize = 18
         label.verticalAlignmentMode = .Bottom
         label.fontColor = SKColor.blackColor()
+        
+        counts[shape.fillColor] = label
+        
         self.addChild(label)
     }
  
@@ -111,7 +116,7 @@ class GameScene: SKScene {
     }
     
     func addControls() {
-        let (width, height, x, y) = getPaletteCoords(row: 1, col: 4)
+        let (_, height, x, y) = getPaletteCoords(row: 1, col: 4)
         self.resetButton = ResetButton(size: height, location: CGPoint(x: x, y: y + 5))
         self.addChild(self.resetButton);
     }
@@ -200,6 +205,8 @@ class GameScene: SKScene {
         } else if (self.palette.contains(node)) {
             self.removeDragger();
             self.dragger = node.copy() as! SKShapeNode;
+            self.dragColor = (node as! SKShapeNode).fillColor
+
             self.addChild(self.dragger);
         }
     }
@@ -217,6 +224,16 @@ class GameScene: SKScene {
             let node: SKShapeNode? = self.nodeAtPoint(location) as? SKShapeNode;
             if (node != nil && (self.canvas == node || node!.fillColor == dragger.fillColor)) {
                 self.colors.append(self.dragger.fillColor)
+
+                let countLabel = counts[self.dragColor]!
+                var count = Int(countLabel.text!)
+                if (count == nil) {
+                    count = 1
+                } else {
+                    count = count! + 1
+                }
+                countLabel.text = String(count!)
+                
                 self.updateCanvas();
             }
             self.removeDragger()
@@ -228,6 +245,10 @@ class GameScene: SKScene {
         self.currentColor = nil;
         self.updateStatus();
         self.canvas.fillColor = SKColor.whiteColor()
+        
+        for (_, label) in counts {
+            label.text = ""
+        }
     }
     
     func updateCanvas() {
