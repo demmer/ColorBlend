@@ -11,6 +11,7 @@ import SpriteKit
 class ColorWheel: SKNode {
     var wheel: SKNode
     var line: SKShapeNode?
+    var label: SKLabelNode
     var size: CGFloat
     
     var hue: CGFloat {
@@ -21,21 +22,34 @@ class ColorWheel: SKNode {
 
     init(size: CGFloat) {
         self.size = size;
+
+        let wheelSize = 60;
         
         wheel = SKSpriteNode(imageNamed: "color_wheel")
 
-        let frame = wheel.calculateAccumulatedFrame()
+        label = SKLabelNode(text: "50\u{00B0}")
 
-        wheel.setScale(CGFloat(size) / frame.width)
-        
         hue = 0
         
         super.init()
         
-        wheel.position = CGPoint(x: size / 2, y: size / 2)
-        wheel.zRotation = CGFloat(-M_PI * 3/16)
-        
         self.addChild(wheel)
+        self.addChild(label)
+
+        label.position = CGPoint(x: size * 0.5, y: 0)
+        label.fontSize = 12
+        label.fontName = Constants.LabelFont
+        label.fontColor = SKColor.blackColor()
+        label.horizontalAlignmentMode = .Center
+        
+        let wheelY = CGFloat(label.calculateAccumulatedFrame().height + 35);
+        wheel.position = CGPoint(x: size * 0.5, y: wheelY)
+        wheel.setScale(CGFloat(wheelSize) / wheel.calculateAccumulatedFrame().width)
+        wheel.zRotation = CGFloat(-M_PI * 3/16)
+
+        let frame = self.calculateAccumulatedFrame()
+        self.yScale = size / frame.height
+        self.xScale = size / frame.height
     }
     
     func update() {
