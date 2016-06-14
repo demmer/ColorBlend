@@ -23,6 +23,10 @@ class ResetButton: SKNode {
         self.addChild(resetLabel);
         
         self.position = location
+        
+        let frame = self.calculateAccumulatedFrame()
+        self.yScale = size / frame.height
+        self.xScale = size / frame.height
     }
     
     required init?(coder aDecoder: NSCoder) {
