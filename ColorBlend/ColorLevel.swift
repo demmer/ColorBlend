@@ -12,7 +12,13 @@ class ColorLevel: SKNode {
     var levelLabel: SKLabelNode;
     var outline: SKShapeNode;
     var fill: SKShapeNode!;
-    var color: SKColor;
+    var color: SKColor {
+        didSet {
+            outline.strokeColor = color
+            fill.strokeColor = color
+            fill.fillColor = color
+        }
+    }
     let barWidth = 20;
     let barHeight = 50;
     var barY: Int;
@@ -62,6 +68,12 @@ class ColorLevel: SKNode {
         self.addChild(fill)
         
         levelLabel.text = "\(Int(self.level * 100))%"
+        
+        if (self.level == 1.0) {
+            levelLabel.position = CGPoint(x: -5, y: 0)
+        } else {
+            levelLabel.position = CGPoint(x: 0, y: 0)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

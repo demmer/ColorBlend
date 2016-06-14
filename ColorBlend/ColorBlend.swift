@@ -41,7 +41,7 @@ class GameScene: SKScene {
     var dragger: SKShapeNode!;
     var resetButton: ResetButton!;
     var colorLabel: SKLabelNode!;
-    var redLevel, greenLevel, blueLevel: ColorLevel!;
+    var redLevel, greenLevel, blueLevel, satLevel, valLevel: ColorLevel!;
     var colorWheel: ColorWheel!;
     var additiveMode, subtractiveMode: IconButton!;
     var controlGroup: SKNode!;
@@ -139,33 +139,47 @@ class GameScene: SKScene {
         self.colorLabel = SKLabelNode(text: "");
         let top = sceneHeight * 0.2
         self.colorLabel.position = CGPoint(x: sceneWidth / 2, y: top - 28);
-        self.colorLabel.fontSize = 18;
+        self.colorLabel.fontSize = 24;
         self.colorLabel.fontName = Constants.LabelFont
         self.colorLabel.fontColor = SKColor.blackColor();
         group.addChild(self.colorLabel);
         
-        let levelWidth: CGFloat = 35;
-        let levelHeight: CGFloat = 70;
+        let levelWidth: CGFloat = sceneWidth * 0.1;
+        let levelHeight: CGFloat = levelWidth * 2;
         
         self.redLevel = ColorLevel(color: SKColor.redColor(), width: levelWidth, height: levelHeight);
         self.greenLevel = ColorLevel(color: SKColor.greenColor(), width: levelWidth, height: levelHeight);
         self.blueLevel = ColorLevel(color: SKColor.blueColor(), width: levelWidth, height: levelHeight);
-
+        self.satLevel = ColorLevel(color: SKColor.blackColor(), width: levelWidth, height: levelHeight)
+        self.valLevel = ColorLevel(color: SKColor.blackColor(), width: levelWidth, height: levelHeight)
+        
         let levelY = self.colorLabel.frame.minY - self.redLevel.calculateAccumulatedFrame().height - 20
 
-        self.redLevel.position = CGPoint(x: sceneWidth * 0.15, y: levelY)
+        // 5-15 red
+        // 15-25 green
+        // 25-35 blue
+        self.redLevel.position = CGPoint(x: sceneWidth * 0.05, y: levelY)
         group.addChild(redLevel)
         
-        self.greenLevel.position = CGPoint(x: sceneWidth * 0.15 + 35, y: levelY)
+        self.greenLevel.position = CGPoint(x: sceneWidth * 0.15, y: levelY)
         group.addChild(greenLevel)
         
-        self.blueLevel.position = CGPoint(x: sceneWidth * 0.15 + 70, y: levelY)
+        self.blueLevel.position = CGPoint(x: sceneWidth * 0.25, y: levelY)
         group.addChild(blueLevel)
         
-        colorWheel = ColorWheel(size: 70)
-        colorWheel.position = CGPoint(x: sceneWidth * 0.6, y: levelY)
+        // 40-60 wheel
+        colorWheel = ColorWheel(size: sceneWidth * 0.2)
+        colorWheel.position = CGPoint(x: sceneWidth * 0.4, y: levelY)
         group.addChild(colorWheel)
 
+        // 75-85 sat
+        // 85-95 val
+        self.satLevel.position = CGPoint(x: sceneWidth * 0.75, y: levelY)
+        group.addChild(satLevel)
+        
+        self.valLevel.position = CGPoint(x: sceneWidth * 0.85, y: levelY)
+        group.addChild(valLevel)
+        
         self.updateStatus();
     }
     
@@ -275,6 +289,8 @@ class GameScene: SKScene {
         self.redLevel.level = red;
         self.greenLevel.level = green;
         self.blueLevel.level = blue;
+        self.satLevel.level = sat;
+        self.valLevel.level = val;
         
         self.colorWheel.hue = hue;
     }
