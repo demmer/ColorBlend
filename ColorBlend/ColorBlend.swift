@@ -45,10 +45,10 @@ class GameScene: SKScene {
     var colorLabel: SKLabelNode!;
     var redLevel, greenLevel, blueLevel, satLevel, valLevel: ColorLevel!;
     var colorWheel: ColorWheel!;
+    var sceneWidth: CGFloat = 0;
+    var sceneHeight: CGFloat = 0;
     
     func getPaletteCoords(row row: CGFloat, col: CGFloat) -> (width: CGFloat, height: CGFloat, x: CGFloat, y: CGFloat) {
-        let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
-        
         let width = sceneWidth / 9;
         let height = 1.3 * width;
         
@@ -103,9 +103,6 @@ class GameScene: SKScene {
     }
 
     func addCanvas() {
-        let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
-        let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
-
         let cornerRadius = sceneWidth / 25;
         let path = CGPathCreateWithRoundedRect(CGRect(x: 0, y: 0, width: 0.8 * sceneWidth, height: 0.4 * sceneHeight),
             cornerRadius, cornerRadius, nil)
@@ -122,9 +119,6 @@ class GameScene: SKScene {
     }
     
     func addStatus() {
-        let sceneWidth: CGFloat = CGRectGetMaxX(self.frame);
-        let sceneHeight: CGFloat = CGRectGetMaxY(self.frame);
-
         let group = SKNode();
         group.position = CGPoint(x: 0, y: sceneHeight * 0.8);
         self.addChild(group)
@@ -178,6 +172,9 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         if (!self.contentCreated) {
+            sceneWidth = CGRectGetMaxX(self.frame);
+            sceneHeight = CGRectGetMaxY(self.frame);
+
             self.addPalette();
             self.addCanvas();
             self.addControls();
@@ -220,24 +217,33 @@ class GameScene: SKScene {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if (self.dragger != nil) {
             let location = touches.first!.locationInNode(self);
-            
             let node: SKShapeNode? = self.nodeAtPoint(location) as? SKShapeNode;
-            if (node != nil && (self.canvas == node || node!.fillColor == dragger.fillColor)) {
-                self.colors.append(self.dragger.fillColor)
-
-                let countLabel = counts[self.dragColor]!
-                var count = Int(countLabel.text!)
-                if (count == nil) {
-                    count = 1
-                } else {
-                    count = count! + 1
-                }
-                countLabel.text = String(count!)
-                
-                self.updateCanvas();
+            
+            if (canvas.containsPoint(location)) {
+                self.addDragColor()
+            } else if (node != nil && node!.fillColor == dragger.fillColor) {
+                dragger.runAction(SKAction.moveTo(CGPoint(x: sceneWidth / 2, y: sceneHeight / 2), duration: 0.25),
+                                  completion: { self.addDragColor() });
+            } else {
+                removeDragger()
             }
-            self.removeDragger()
         }
+    }
+    
+    func addDragColor() {
+        colors.append(dragger.fillColor)
+        
+        let countLabel = counts[dragColor]!
+        var count = Int(countLabel.text!)
+        if (count == nil) {
+            count = 1
+        } else {
+            count = count! + 1
+        }
+        countLabel.text = String(count!)
+        
+        updateCanvas();
+        removeDragger()
     }
     
     func reset() {
