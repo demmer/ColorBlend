@@ -15,8 +15,8 @@
 import SpriteKit;
 
 enum Mode {
-    case Additive
-    case Subtractive
+    case RGB
+    case HSV
 };
 
 
@@ -180,7 +180,7 @@ class GameScene: SKScene {
             self.addControls();
             self.addStatus();
             
-            self.mode = .Subtractive
+            self.mode = .HSV
         }
         self.contentCreated = true;
     }
@@ -258,7 +258,7 @@ class GameScene: SKScene {
     }
     
     func updateCanvas() {
-        if (self.mode == .Additive) {
+        if (self.mode == .RGB) {
             self.currentColor = ColorUtils.rgbBlend(self.colors)
         } else {
             self.currentColor = ColorUtils.hsvBlend(self.colors)
