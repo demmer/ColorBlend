@@ -14,7 +14,7 @@ class ColorUtilsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testClosestMatch() {
         XCTAssertEqual(ColorName.closestMatch(UIColor.blackColor()), "Black")
         XCTAssertEqual(ColorName.closestMatch(UIColor.whiteColor()), "White")
         XCTAssertEqual(ColorName.closestMatch(UIColor.blueColor()),  "Blue")
@@ -27,7 +27,23 @@ class ColorUtilsTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testPerformanceExample() {
+    func testHSVBlend() {
+        XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.redColor()])), "Red")
+        XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.blueColor()])), "Blue")
+        XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.redColor(), UIColor.blueColor()])), "Fuchsia")
+        XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.yellowColor(), UIColor.blueColor()])), "Medium spring green")
+
+        let neutral = ColorUtils.hsvBlend([
+            UIColor.blueColor(),
+            UIColor.redColor(),
+            UIColor.greenColor()
+            ]);
+
+        // This is nonintuitive, but due to the slight rounding this is what happens.
+        XCTAssertEqual(ColorName.closestMatch(neutral), "Blue");
+    }
+    
+    func testMatchPerformance() {
         // This is an example of a performance test case.
         self.measureBlock {
             ColorName.closestMatch(UIColor.whiteColor())
