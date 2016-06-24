@@ -98,6 +98,11 @@ class ColorUtils {
         return UIColor.init(red: rgb.red, green: rgb.green, blue: rgb.blue, alpha: 1.0)
     }
     
+    static func roundToPlaces(value value:CGFloat, places:Int) -> CGFloat {
+        let divisor = pow(10.0, CGFloat(places))
+        return round(value * divisor) / divisor
+    }
+    
     static func hsvBlend(colors: [UIColor]) -> UIColor {
         if (colors.count == 0) {
             return UIColor.whiteColor()
