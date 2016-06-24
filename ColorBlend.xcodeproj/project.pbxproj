@@ -174,10 +174,12 @@
 					D70F06C11CBDC1E800581E76 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = EK3EN6F5X8;
+						LastSwiftMigration = 0800;
 					};
 					D7E1EF6C1CF69DCC00443610 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = HSF5B9Y9RF;
+						LastSwiftMigration = 0800;
 						TestTargetID = D70F06C11CBDC1E800581E76;
 					};
 				};
@@ -373,6 +375,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlend;
 				PRODUCT_NAME = ColorBlend;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -388,6 +391,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlend;
 				PRODUCT_NAME = ColorBlend;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -402,6 +406,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlendTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorBlend.app/ColorBlend";
 			};
 			name = Debug;
@@ -416,6 +421,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlendTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorBlend.app/ColorBlend";
 			};
 			name = Release;
