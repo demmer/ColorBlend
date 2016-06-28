@@ -162,7 +162,7 @@ class GameScene: SKScene {
         group.addChild(blueLevel)
         
         // 40-60 wheel
-        colorWheel = ColorWheel(size: sceneWidth * 0.2)
+        colorWheel = ColorWheel(size: levelHeight)
         colorWheel.position = CGPoint(x: sceneWidth * 0.4, y: levelY)
         group.addChild(colorWheel)
 

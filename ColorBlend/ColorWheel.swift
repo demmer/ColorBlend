@@ -9,9 +9,11 @@
 import SpriteKit
 
 class ColorWheel: SKNode {
+    var title, level: SKLabelNode;
     var wheel: SKNode
     var line: SKShapeNode?
     var size: CGFloat
+    var wheelSize: CGFloat
     
     var hue: CGFloat {
         didSet {
@@ -22,20 +24,40 @@ class ColorWheel: SKNode {
     init(size: CGFloat) {
         self.size = size;
         
+        
+        title = SKLabelNode(text: "Hue")
+        title.fontColor = SKColor.blackColor()
+        title.fontName = Constants.LabelFont
+        title.fontSize = Constants.LabelFontSize
+        title.horizontalAlignmentMode = .Left
+        
+        let labelHeight = title.frame.height;
+
+        wheelSize = size - labelHeight - 20
+
         wheel = SKSpriteNode(imageNamed: "color_wheel")
-
-        let frame = wheel.calculateAccumulatedFrame()
-
-        wheel.setScale(CGFloat(size) / frame.width)
+        wheel.setScale(CGFloat(wheelSize) / wheel.frame.width)
+        
+        level = SKLabelNode(text: "")
+        level.fontColor = SKColor.blackColor()
+        level.fontName = Constants.LabelFont
+        level.fontSize = Constants.LabelFontSize
+        level.horizontalAlignmentMode = .Left
         
         hue = 0
         
         super.init()
+
+        title.position = CGPoint(x: size / 2 - title.frame.width / 2, y: size - labelHeight);
         
         wheel.position = CGPoint(x: size / 2, y: size / 2)
         wheel.zRotation = CGFloat(-M_PI * 3/16)
         
+        level.position = CGPoint(x: size / 2 - level.frame.width / 2, y: 0)
+        
+        self.addChild(title)
         self.addChild(wheel)
+        self.addChild(level)
     }
     
     func update() {
@@ -45,8 +67,8 @@ class ColorWheel: SKNode {
         }
         
         if (hue != 0) {
-            let x = (size / 2) * cos(2 * CGFloat(M_PI) * hue)
-            let y = (size / 2) * sin(2 * CGFloat(M_PI) * hue)
+            let x = (wheelSize / 2) * cos(2 * CGFloat(M_PI) * hue)
+            let y = (wheelSize / 2) * sin(2 * CGFloat(M_PI) * hue)
             
             let path = CGPathCreateMutable()
             CGPathMoveToPoint(path, nil, 0, 0)
@@ -58,7 +80,9 @@ class ColorWheel: SKNode {
             line!.position = CGPoint(x: size / 2, y: size / 2)
             self.addChild(line!)
         }
-
+        
+        level.text = "\(Int(hue * 360))\u{00B0}"
+        level.position = CGPoint(x: size / 2 - level.frame.width / 2, y: 0)
     }
 
     required init?(coder aDecoder: NSCoder) {
