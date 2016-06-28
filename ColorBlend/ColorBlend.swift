@@ -73,9 +73,16 @@ class GameScene: SKScene {
         self.addChild(shape)
         
         let label = SKLabelNode(text: "")
-        label.position = CGPoint(x: x, y: y - height / 2 - 20)
+        var labelY = y - height / 2 - 20;
+
+        // XXX this makes no sense to me but it seems to be needed on ipads to make things line up
+        if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
+            labelY -= 10
+        }
+
+        label.position = CGPoint(x: x, y: labelY)
         label.fontName = Constants.LabelFont
-        label.fontSize = 18
+        label.fontSize = Constants.LabelFontSize
         label.verticalAlignmentMode = .Bottom
         label.fontColor = SKColor.blackColor()
         
@@ -105,7 +112,7 @@ class GameScene: SKScene {
 
     func addCanvas() {
         let cornerRadius = sceneWidth / 25;
-        let path = CGPathCreateWithRoundedRect(CGRect(x: 0, y: 0, width: 0.8 * sceneWidth, height: 0.4 * sceneHeight),
+        let path = CGPathCreateWithRoundedRect(CGRect(x: 0, y: 0, width: 0.8 * sceneWidth, height: 0.35 * sceneHeight),
             cornerRadius, cornerRadius, nil)
         canvas = SKShapeNode.init(path: path);
         canvas.position = CGPoint(x: 0.1 * sceneWidth, y: 0.35 * sceneHeight)
@@ -126,12 +133,12 @@ class GameScene: SKScene {
         
         self.colorLabel = SKLabelNode(text: "");
         let top = sceneHeight * 0.2
-        self.colorLabel.position = CGPoint(x: sceneWidth / 2, y: top - 28);
-        self.colorLabel.fontSize = 24;
+        self.colorLabel.fontSize = Constants.TitleFontSize;
         self.colorLabel.fontName = Constants.LabelFont
         self.colorLabel.fontColor = SKColor.blackColor();
+        self.colorLabel.position = CGPoint(x: sceneWidth / 2, y: top - Constants.TitleFontSize);
         group.addChild(self.colorLabel);
-        
+
         let levelWidth: CGFloat = sceneWidth * 0.1;
         let levelHeight: CGFloat = levelWidth * 2;
         
