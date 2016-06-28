@@ -39,6 +39,7 @@ class GameScene: SKScene {
     var counts: Dictionary<SKColor, SKLabelNode> = [:];
     var canvas: SKShapeNode!;
     var currentColor: SKColor!;
+    var touchStart: CGPoint!;
     var dragger: SKShapeNode!;
     var dragColor: SKColor!;
     var resetButton: ResetButton!;
@@ -194,46 +195,61 @@ class GameScene: SKScene {
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first;
-        let location = touch!.locationInNode(self)
-        let node = self.nodeAtPoint(location)
-        
-        if (self.resetButton.containsPoint(location)) {
-            self.reset();
-        } else if (self.palette.contains(node)) {
-            self.removeDragger();
-            self.dragger = node.copy() as! SKShapeNode;
-            self.dragColor = (node as! SKShapeNode).fillColor
-
-            self.addChild(self.dragger);
-        }
+        touchStart = touch!.locationInNode(self)
     }
 
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {self
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch = touches.first!;
+
         if (self.dragger != nil) {
-            self.dragger.position = touches.first!.locationInNode(self);
-        }
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if (self.dragger != nil) {
-            let location = touches.first!.locationInNode(self);
-            let node: SKShapeNode? = self.nodeAtPoint(location) as? SKShapeNode;
-            
-            if (canvas.containsPoint(location)) {
-                self.addDragColor()
-            } else if (node != nil && node!.fillColor == dragger.fillColor) {
-                dragger.runAction(SKAction.moveTo(CGPoint(x: sceneWidth / 2, y: sceneHeight / 2), duration: 0.25),
-                                  completion: { self.addDragColor() });
-            } else {
-                removeDragger()
+            self.dragger.position = touch.locationInNode(self);
+
+        } else {
+            // Check if the dragging started at a palette node -- if so create a new dragger.
+            let node = self.nodeAtPoint(touchStart)
+            if (self.palette.contains(node)) {
+                self.dragger = node.copy() as! SKShapeNode;
+                self.dragColor = (node as! SKShapeNode).fillColor
+                self.addChild(self.dragger);
             }
         }
     }
     
-    func addDragColor() {
-        colors.append(dragger.fillColor)
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch = touches.first!;
+        let location = touch.locationInNode(self);
+
+        if (self.resetButton.containsPoint(touchStart) && self.resetButton.containsPoint(location)) {
+            self.reset();
+        }
+
+        else if (self.dragger != nil) {
+            if (canvas.containsPoint(location)) {
+                self.addColor(dragColor)
+            }
+            self.removeDragger()
+        } else {
+            // Handle touches inside the palette
+            let startNode = self.nodeAtPoint(touchStart)
+            let endNode = self.nodeAtPoint(touch.locationInNode(self))
+            if (startNode == endNode && self.palette.contains(startNode)) {
+                let mover = startNode.copy() as! SKShapeNode;
+                self.addChild(mover)
+                mover.runAction(SKAction.moveTo(CGPoint(x: sceneWidth / 2, y: sceneHeight / 2), duration: 0.25),
+                                completion: {
+                                    self.addColor(mover.fillColor);
+                                    mover.removeFromParent()
+                                }
+                );
+                
+            }
+        }
+    }
+    
+    func addColor(color: SKColor) {
+        colors.append(color)
         
-        let countLabel = counts[dragColor]!
+        let countLabel = counts[color]!
         var count = Int(countLabel.text!)
         if (count == nil) {
             count = 1
@@ -243,7 +259,6 @@ class GameScene: SKScene {
         countLabel.text = String(count!)
         
         updateCanvas();
-        removeDragger()
     }
     
     func reset() {
