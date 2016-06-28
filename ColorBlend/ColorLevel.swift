@@ -9,6 +9,7 @@
 import SpriteKit
 
 class ColorLevel: SKNode {
+    var title: SKLabelNode;
     var levelLabel: SKLabelNode;
     var outline: SKShapeNode;
     var fill: SKShapeNode!;
@@ -19,44 +20,57 @@ class ColorLevel: SKNode {
             fill.fillColor = color
         }
     }
-    let barWidth = 20;
-    let barHeight = 50;
+    let barWidth: Int;
+    let barHeight: Int;
+    let margin = 5;
     var barY: Int;
-
-    var level: CGFloat {
-        didSet {
-            self.update();
-        }
-    }
+    var level: CGFloat;
     
-    init(color: SKColor, width: CGFloat, height: CGFloat) {
+    init(title titleString: String, color: SKColor, width: CGFloat, height: CGFloat) {
         self.color = color;
-        
+        self.barWidth = Int(width);
+
         levelLabel = SKLabelNode(text: "0%")
         levelLabel.fontColor = SKColor.blackColor()
         levelLabel.fontName = Constants.LabelFont
-        levelLabel.fontSize = 12
-        levelLabel.position = CGPoint(x: 0, y: 0)
+        levelLabel.fontSize = Constants.LabelFontSize
         levelLabel.horizontalAlignmentMode = .Left
         
-        barY = Int(self.levelLabel.calculateAccumulatedFrame().height + 5);
+        title = SKLabelNode(text: titleString)
+        title.fontColor = SKColor.blackColor()
+        title.fontName = Constants.LabelFont
+        title.fontSize = Constants.LabelFontSize
+        title.horizontalAlignmentMode = .Left
+
+        let labelHeight = Int(self.levelLabel.calculateAccumulatedFrame().height)
+
+        barHeight = Int(height) - 2*labelHeight - 2*margin;
+
+        barY = labelHeight + margin
+
         outline = SKShapeNode(rect: CGRect(x: 0, y: barY, width: barWidth, height: barHeight))
         outline.strokeColor = color;
 
         level = 1
-        
-        super.init()
 
+        super.init()
+        
+        title.position = CGPoint(x: self.centerX(title), y: barY + barHeight + 5)
+        levelLabel.position = CGPoint(x: 0, y: 0)
+        
         self.addChild(self.levelLabel);
         self.addChild(self.outline);
-        self.update()
-        
-        let frame = self.calculateAccumulatedFrame()
-        self.yScale = height / frame.height
-        self.xScale = width / frame.width
+        self.addChild(self.title);
+        self.update(1)
+    }
+    
+    func centerX(node: SKNode) -> Int {
+        return -(Int(node.calculateAccumulatedFrame().width) - barWidth) / 2
     }
 
-    func update() {
+    func update(level: CGFloat) {
+        self.level = level
+        
         if (fill != nil) {
             fill.removeFromParent()
         }
@@ -68,12 +82,7 @@ class ColorLevel: SKNode {
         self.addChild(fill)
         
         levelLabel.text = "\(Int(self.level * 100))%"
-        
-        if (self.level == 1.0) {
-            levelLabel.position = CGPoint(x: -5, y: 0)
-        } else {
-            levelLabel.position = CGPoint(x: 0, y: 0)
-        }
+        levelLabel.position = CGPoint(x: centerX(levelLabel), y: 0);
     }
     
     required init?(coder aDecoder: NSCoder) {

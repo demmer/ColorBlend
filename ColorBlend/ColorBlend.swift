@@ -139,14 +139,13 @@ class GameScene: SKScene {
         self.colorLabel.position = CGPoint(x: sceneWidth / 2, y: top - Constants.TitleFontSize);
         group.addChild(self.colorLabel);
 
-        let levelWidth: CGFloat = sceneWidth * 0.1;
-        let levelHeight: CGFloat = levelWidth * 2;
-        
-        self.redLevel = ColorLevel(color: SKColor.redColor(), width: levelWidth, height: levelHeight);
-        self.greenLevel = ColorLevel(color: SKColor.greenColor(), width: levelWidth, height: levelHeight);
-        self.blueLevel = ColorLevel(color: SKColor.blueColor(), width: levelWidth, height: levelHeight);
-        self.satLevel = ColorLevel(color: SKColor.blackColor(), width: levelWidth, height: levelHeight)
-        self.valLevel = ColorLevel(color: SKColor.blackColor(), width: levelWidth, height: levelHeight)
+        let levelWidth: CGFloat = sceneWidth * 0.075;
+        let levelHeight: CGFloat = sceneWidth * 0.25;
+        self.redLevel = ColorLevel(title: "Red", color: SKColor.redColor(), width: levelWidth, height: levelHeight);
+        self.greenLevel = ColorLevel(title: "Green", color: SKColor.greenColor(), width: levelWidth, height: levelHeight);
+        self.blueLevel = ColorLevel(title: "Blue", color: SKColor.blueColor(), width: levelWidth, height: levelHeight);
+        self.satLevel = ColorLevel(title: "Sat", color: SKColor.blackColor(), width: levelWidth, height: levelHeight)
+        self.valLevel = ColorLevel(title: "Val", color: SKColor.blackColor(), width: levelWidth, height: levelHeight)
         
         let levelY = self.colorLabel.frame.minY - self.redLevel.calculateAccumulatedFrame().height - 30
 
@@ -306,11 +305,11 @@ class GameScene: SKScene {
             self.colorLabel.text = "(Touch Colors To Blend)";
         }
         
-        self.redLevel.level = red;
-        self.greenLevel.level = green;
-        self.blueLevel.level = blue;
-        self.satLevel.level = sat;
-        self.valLevel.level = val;
+        self.redLevel.update(red);
+        self.greenLevel.update(green);
+        self.blueLevel.update(blue)
+        self.satLevel.update(sat);
+        self.valLevel.update(val);
         
         self.colorWheel.hue = hue;
     }
