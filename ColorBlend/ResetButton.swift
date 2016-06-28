@@ -9,24 +9,35 @@
 import SpriteKit
 
 class ResetButton: SKNode {
-     init(size: CGFloat, location: CGPoint) {
+     init(height: CGFloat, location: CGPoint) {
         super.init()
         let sprite = SKSpriteNode(imageNamed: "reset");
-        sprite.setScale(60 / sprite.size.height)
-        self.addChild(sprite)
-
+        
         let resetLabel = SKLabelNode(text: "Reset");
-        resetLabel.fontSize = 18;
         resetLabel.fontName = Constants.LabelFont
+        resetLabel.fontSize = Constants.LabelFontSize
         resetLabel.fontColor = SKColor.blackColor();
-        resetLabel.position = CGPoint(x: 0, y: -40);
+        resetLabel.verticalAlignmentMode = .Top
+
+        self.addChild(sprite)
         self.addChild(resetLabel);
-        
+
+        let labelHeight = resetLabel.calculateAccumulatedFrame().height
+
+        // XXX this makes no sense to me but it seems to be needed on ipads to make things line up
+        if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
+            resetLabel.position = CGPoint(x: 0, y: -labelHeight - 20)
+        }
+
+        print("labelHeight \(labelHeight)")
+        sprite.setScale((height - labelHeight - 5) / sprite.size.height)
+        sprite.position = CGPoint(x: 0, y: labelHeight + 5)
+
+        print("total frame \(self.calculateAccumulatedFrame())")
+        print("sprite frame \(sprite.calculateAccumulatedFrame())")
+        print("label frame \(resetLabel.calculateAccumulatedFrame())")
+
         self.position = location
-        
-        let frame = self.calculateAccumulatedFrame()
-        self.yScale = size / frame.height
-        self.xScale = size / frame.height
     }
     
     required init?(coder aDecoder: NSCoder) {

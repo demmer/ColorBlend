@@ -122,7 +122,7 @@ class GameScene: SKScene {
     
     func addControls() {
         let (_, height, x, y) = getPaletteCoords(row: 1, col: 4)
-        self.resetButton = ResetButton(size: height, location: CGPoint(x: x, y: y + 5))
+        self.resetButton = ResetButton(height: height, location: CGPoint(x: x, y: y - 20))
         self.addChild(self.resetButton);
     }
     
