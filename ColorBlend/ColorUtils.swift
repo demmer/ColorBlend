@@ -108,10 +108,6 @@ class ColorUtils {
             return UIColor.whiteColor()
         }
         
-        if (colors.count == 1) {
-            return colors[0]
-        }
-
         var hue: CGFloat = 0
         var sat: CGFloat = 0
         var val: CGFloat = 0
@@ -120,6 +116,10 @@ class ColorUtils {
         var y: CGFloat = 0
         
         let pi2: CGFloat = 3.14159 * 2;
+        
+        var hues: CGFloat = 0;
+        var whites: CGFloat = 0;
+        
         for color in colors {
             var h: CGFloat = 0
             var s: CGFloat = 0
@@ -127,14 +127,20 @@ class ColorUtils {
             
             color.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
             
-            x += cos(pi2 * h)
-            y += sin(pi2 * h)
+            if (h != 0) {
+                hues += 1;
+                x += cos(pi2 * h)
+                y += sin(pi2 * h)
+                sat += s
 
-            sat += s
+            } else if (v == 1.0) {
+                whites += 1;
+            }
+
             val += v
         }
         
-        sat = sat / CGFloat(colors.count)
+        sat = (sat) / (hues + whites)
         val = val / CGFloat(colors.count)
         
         if (x != 0.0 || y != 0.0) {
