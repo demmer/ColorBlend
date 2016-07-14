@@ -372,7 +372,7 @@
 				INFOPLIST_FILE = ColorBlend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlend;
+				PRODUCT_BUNDLE_IDENTIFIER = demmer.co.colorblend;
 				PRODUCT_NAME = ColorBlend;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 2.3;
@@ -388,7 +388,7 @@
 				INFOPLIST_FILE = ColorBlend/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Demmer.ColorBlend;
+				PRODUCT_BUNDLE_IDENTIFIER = demmer.co.colorblend;
 				PRODUCT_NAME = ColorBlend;
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 2.3;
