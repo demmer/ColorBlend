@@ -20,7 +20,16 @@ class ColorName {
         self.green = green
         self.blue = blue
     }
-
+    
+    static func get(name: String) -> ColorName? {
+        for spec in ColorNames {
+            if (spec.name == name) {
+                return spec
+            }
+        }
+        return nil;
+    }
+    
     func distance(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGFloat {
         return pow(red - self.red, 2) +
             pow(green - self.green, 2) +
@@ -46,7 +55,7 @@ class ColorName {
         
         return name;
     }
-
+    
     static var ColorNames: [ColorName] = [
         ColorName("Air Force blue", red: 0.36470588235294116, green: 0.5411764705882353, blue: 0.6588235294117647),
         ColorName("Alice blue", red: 0.9411764705882353, green: 0.9725490196078431, blue: 1),
@@ -125,6 +134,7 @@ class ColorName {
         ColorName("Brink pink", red: 0.984313725490196, green: 0.3764705882352941, blue: 0.4980392156862745),
         ColorName("British racing green", red: 0, green: 0.25882352941176473, blue: 0.1450980392156863),
         ColorName("Bronze", red: 0.803921568627451, green: 0.4980392156862745, blue: 0.19607843137254902),
+        ColorName("Brown", red: 0.6, green: 0.4, blue: 0.2),
         ColorName("Brown (traditional)", red: 0.5882352941176471, green: 0.29411764705882354, blue: 0),
         ColorName("Brown (web)", red: 0.6470588235294118, green: 0.16470588235294117, blue: 0.16470588235294117),
         ColorName("Bubble gum", red: 1, green: 0.7568627450980392, blue: 0.8),
@@ -225,7 +235,8 @@ class ColorName {
         ColorName("Dark cyan", red: 0, green: 0.5450980392156862, blue: 0.5450980392156862),
         ColorName("Dark electric blue", red: 0.3254901960784314, green: 0.40784313725490196, blue: 0.47058823529411764),
         ColorName("Dark goldenrod", red: 0.7215686274509804, green: 0.5254901960784314, blue: 0.043137254901960784),
-        ColorName("Dark gray", red: 0.6627450980392157, green: 0.6627450980392157, blue: 0.6627450980392157),
+//        ColorName("Dark gray", red: 0.6627450980392157, green: 0.6627450980392157, blue: 0.6627450980392157),
+        ColorName("Dark gray", red: 0.3333333333333333, green: 0.3333333333333333, blue: 0.3333333333333333),
         ColorName("Dark green", red: 0.00392156862745098, green: 0.19607843137254902, blue: 0.12549019607843137),
         ColorName("Dark jungle green", red: 0.10196078431372549, green: 0.1411764705882353, blue: 0.12941176470588237),
         ColorName("Dark khaki", red: 0.7411764705882353, green: 0.7176470588235294, blue: 0.4196078431372549),
@@ -258,7 +269,6 @@ class ColorName {
         ColorName("Dark turquoise", red: 0, green: 0.807843137254902, blue: 0.8196078431372549),
         ColorName("Dark violet", red: 0.5803921568627451, green: 0, blue: 0.8274509803921568),
         ColorName("Dartmouth green", red: 0, green: 0.4117647058823529, blue: 0.24313725490196078),
-        ColorName("Davy's grey", red: 0.3333333333333333, green: 0.3333333333333333, blue: 0.3333333333333333),
         ColorName("Debian red", red: 0.8431372549019608, green: 0.0392156862745098, blue: 0.3254901960784314),
         ColorName("Deep carmine", red: 0.6627450980392157, green: 0.12549019607843137, blue: 0.24313725490196078),
         ColorName("Deep carmine pink", red: 0.9372549019607843, green: 0.18823529411764706, blue: 0.2196078431372549),
@@ -291,15 +301,15 @@ class ColorName {
         ColorName("Egyptian blue", red: 0.06274509803921569, green: 0.20392156862745098, blue: 0.6509803921568628),
         ColorName("Electric blue", red: 0.49019607843137253, green: 0.9764705882352941, blue: 1),
         ColorName("Electric crimson", red: 1, green: 0, blue: 0.24705882352941178),
-        ColorName("Electric cyan", red: 0, green: 1, blue: 1),
-        ColorName("Electric green", red: 0, green: 1, blue: 0),
+//        ColorName("Electric cyan", red: 0, green: 1, blue: 1),
+//        ColorName("Electric green", red: 0, green: 1, blue: 0),
         ColorName("Electric indigo", red: 0.43529411764705883, green: 0, blue: 1),
         ColorName("Electric lavender", red: 0.9568627450980393, green: 0.7333333333333333, blue: 1),
         ColorName("Electric lime", red: 0.8, green: 1, blue: 0),
         ColorName("Electric purple", red: 0.7490196078431373, green: 0, blue: 1),
         ColorName("Electric ultramarine", red: 0.24705882352941178, green: 0, blue: 1),
         ColorName("Electric violet", red: 0.5607843137254902, green: 0, blue: 1),
-        ColorName("Electric yellow", red: 1, green: 1, blue: 0),
+//        ColorName("Electric yellow", red: 1, green: 1, blue: 0),
         ColorName("Emerald", red: 0.3137254901960784, green: 0.7843137254901961, blue: 0.47058823529411764),
         ColorName("Eton blue", red: 0.5882352941176471, green: 0.7843137254901961, blue: 0.6352941176470588),
         ColorName("Fallow", red: 0.7568627450980392, green: 0.6039215686274509, blue: 0.4196078431372549),
@@ -328,7 +338,7 @@ class ColorName {
         ColorName("French blue", red: 0, green: 0.4470588235294118, blue: 0.7333333333333333),
         ColorName("French lilac", red: 0.5254901960784314, green: 0.3764705882352941, blue: 0.5568627450980392),
         ColorName("French rose", red: 0.9647058823529412, green: 0.2901960784313726, blue: 0.5411764705882353),
-        ColorName("Fuchsia", red: 1, green: 0, blue: 1),
+//        ColorName("Fuchsia", red: 1, green: 0, blue: 1),
         ColorName("Fuchsia pink", red: 1, green: 0.4666666666666667, blue: 1),
         ColorName("Fulvous", red: 0.8941176470588236, green: 0.5176470588235295, blue: 0),
         ColorName("Fuzzy Wuzzy", red: 0.8, green: 0.4, blue: 0.4),
@@ -338,18 +348,18 @@ class ColorName {
         ColorName("Ginger", red: 0.6901960784313725, green: 0.396078431372549, blue: 0),
         ColorName("Glaucous", red: 0.3764705882352941, green: 0.5098039215686274, blue: 0.7137254901960784),
         ColorName("Glitter", red: 0.9019607843137255, green: 0.9098039215686274, blue: 0.9803921568627451),
-        ColorName("Gold (metallic)", red: 0.8313725490196079, green: 0.6862745098039216, blue: 0.21568627450980393),
-        ColorName("Gold (web) (Golden)", red: 1, green: 0.8431372549019608, blue: 0),
+        ColorName("Gold", red: 0.8313725490196079, green: 0.6862745098039216, blue: 0.21568627450980393),
+        ColorName("Gold (web)", red: 1, green: 0.8431372549019608, blue: 0),
         ColorName("Golden brown", red: 0.6, green: 0.396078431372549, blue: 0.08235294117647059),
         ColorName("Golden poppy", red: 0.9882352941176471, green: 0.7607843137254902, blue: 0),
         ColorName("Golden yellow", red: 1, green: 0.8745098039215686, blue: 0),
         ColorName("Goldenrod", red: 0.8549019607843137, green: 0.6470588235294118, blue: 0.12549019607843137),
         ColorName("Granny Smith Apple", red: 0.6588235294117647, green: 0.8941176470588236, blue: 0.6274509803921569),
         ColorName("Gray", red: 0.5019607843137255, green: 0.5019607843137255, blue: 0.5019607843137255),
-        ColorName("Gray (HTML/CSS gray)", red: 0.4980392156862745, green: 0.4980392156862745, blue: 0.4980392156862745),
-        ColorName("Gray (X11 gray)", red: 0.7450980392156863, green: 0.7450980392156863, blue: 0.7450980392156863),
+        ColorName("Gray (HTML/CSS)", red: 0.4980392156862745, green: 0.4980392156862745, blue: 0.4980392156862745),
+        ColorName("Gray (X11)", red: 0.7450980392156863, green: 0.7450980392156863, blue: 0.7450980392156863),
         ColorName("Gray-asparagus", red: 0.27450980392156865, green: 0.34901960784313724, blue: 0.27058823529411763),
-        ColorName("Green (color wheel) (X11 green)", red: 0, green: 1, blue: 0),
+        ColorName("Green", red: 0, green: 1, blue: 0),
         ColorName("Green (HTML/CSS green)", red: 0, green: 0.5019607843137255, blue: 0),
         ColorName("Green (Munsell)", red: 0, green: 0.6588235294117647, blue: 0.4666666666666667),
         ColorName("Green (NCS)", red: 0, green: 0.6235294117647059, blue: 0.4196078431372549),
@@ -427,7 +437,8 @@ class ColorName {
         ColorName("Light cyan", red: 0.8784313725490196, green: 1, blue: 1),
         ColorName("Light fuchsia pink", red: 0.9764705882352941, green: 0.5176470588235295, blue: 0.9372549019607843),
         ColorName("Light goldenrod yellow", red: 0.9803921568627451, green: 0.9803921568627451, blue: 0.8235294117647058),
-        ColorName("Light gray", red: 0.8274509803921568, green: 0.8274509803921568, blue: 0.8274509803921568),
+//        ColorName("Light gray", red: 0.8274509803921568, green: 0.8274509803921568, blue: 0.8274509803921568),
+        ColorName("Light gray", red: 0.66, green: 0.66, blue: 0.66),
         ColorName("Light green", red: 0.5647058823529412, green: 0.9333333333333333, blue: 0.5647058823529412),
         ColorName("Light khaki", red: 0.9411764705882353, green: 0.9019607843137255, blue: 0.5490196078431373),
         ColorName("Light pastel purple", red: 0.6941176470588235, green: 0.611764705882353, blue: 0.8509803921568627),
@@ -441,8 +452,8 @@ class ColorName {
         ColorName("Light Thulian pink", red: 0.9019607843137255, green: 0.5607843137254902, blue: 0.6745098039215687),
         ColorName("Light yellow", red: 1, green: 1, blue: 0.9294117647058824),
         ColorName("Lilac", red: 0.7843137254901961, green: 0.6352941176470588, blue: 0.7843137254901961),
-        ColorName("Lime (color wheel)", red: 0.7490196078431373, green: 1, blue: 0),
-        ColorName("Lime (web) (X11 green)", red: 0, green: 1, blue: 0),
+        ColorName("Lime", red: 0.7490196078431373, green: 1, blue: 0),
+        ColorName("Lime (web)", red: 0, green: 1, blue: 0),
         ColorName("Lime green", red: 0.19607843137254902, green: 0.803921568627451, blue: 0.19607843137254902),
         ColorName("Lincoln green", red: 0.09803921568627451, green: 0.34901960784313724, blue: 0.0196078431372549),
         ColorName("Linen", red: 0.9803921568627451, green: 0.9411764705882353, blue: 0.9019607843137255),
@@ -532,9 +543,9 @@ class ColorName {
         ColorName("Olivine", red: 0.6039215686274509, green: 0.7254901960784313, blue: 0.45098039215686275),
         ColorName("Onyx", red: 0.058823529411764705, green: 0.058823529411764705, blue: 0.058823529411764705),
         ColorName("Opera mauve", red: 0.7176470588235294, green: 0.5176470588235295, blue: 0.6549019607843137),
-        ColorName("Orange (color wheel)", red: 1, green: 0.4980392156862745, blue: 0),
+        ColorName("Orange", red: 1, green: 0.4980392156862745, blue: 0),
         ColorName("Orange (RYB)", red: 0.984313725490196, green: 0.6, blue: 0.00784313725490196),
-        ColorName("Orange (web color)", red: 1, green: 0.6470588235294118, blue: 0),
+        ColorName("Orange (web)", red: 1, green: 0.6470588235294118, blue: 0),
         ColorName("Orange peel", red: 1, green: 0.6235294117647059, blue: 0),
         ColorName("Orange-red", red: 1, green: 0.27058823529411763, blue: 0),
         ColorName("Orchid", red: 0.8549019607843137, green: 0.4392156862745098, blue: 0.8392156862745098),
@@ -621,6 +632,7 @@ class ColorName {
         ColorName("Psychedelic purple", red: 0.8745098039215686, green: 0, blue: 1),
         ColorName("Puce", red: 0.8, green: 0.5333333333333333, blue: 0.6),
         ColorName("Pumpkin", red: 1, green: 0.4588235294117647, blue: 0.09411764705882353),
+        ColorName("Purple", red: 0.5, green: 0, blue: 0.5),
         ColorName("Purple (HTML/CSS)", red: 0.5019607843137255, green: 0, blue: 0.5019607843137255),
         ColorName("Purple (Munsell)", red: 0.6235294117647059, green: 0, blue: 0.7725490196078432),
         ColorName("Purple (X11)", red: 0.6274509803921569, green: 0.12549019607843137, blue: 0.9411764705882353),
@@ -660,7 +672,7 @@ class ColorName {
         ColorName("Rose gold", red: 0.7176470588235294, green: 0.43137254901960786, blue: 0.4745098039215686),
         ColorName("Rose madder", red: 0.8901960784313725, green: 0.14901960784313725, blue: 0.21176470588235294),
         ColorName("Rose pink", red: 1, green: 0.4, blue: 0.8),
-        ColorName("Rose quartz", red: 0.6666666666666666, green: 0.596078431372549, blue: 0.6627450980392157),
+//        ColorName("Rose quartz", red: 0.6666666666666666, green: 0.596078431372549, blue: 0.6627450980392157),
         ColorName("Rose taupe", red: 0.5647058823529412, green: 0.36470588235294116, blue: 0.36470588235294116),
         ColorName("Rose vale", red: 0.6705882352941176, green: 0.3058823529411765, blue: 0.3215686274509804),
         ColorName("Rosewood", red: 0.396078431372549, green: 0, blue: 0.043137254901960784),
@@ -791,7 +803,7 @@ class ColorName {
         ColorName("Vermilion", red: 0.8901960784313725, green: 0.25882352941176473, blue: 0.20392156862745098),
         ColorName("Veronica", red: 0.6274509803921569, green: 0.12549019607843137, blue: 0.9411764705882353),
         ColorName("Violet", red: 0.5607843137254902, green: 0, blue: 1),
-        ColorName("Violet (color wheel)", red: 0.4980392156862745, green: 0, blue: 1),
+        ColorName("Violet", red: 0.4980392156862745, green: 0, blue: 1),
         ColorName("Violet (RYB)", red: 0.5254901960784314, green: 0.00392156862745098, blue: 0.6862745098039216),
         ColorName("Violet (web)", red: 0.9333333333333333, green: 0.5098039215686274, blue: 0.9333333333333333),
         ColorName("Viridian", red: 0.25098039215686274, green: 0.5098039215686274, blue: 0.42745098039215684),
