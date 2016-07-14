@@ -91,23 +91,21 @@ class GameScene: SKScene {
         self.addChild(label)
     }
  
-    func addPalette() {
-        let pinkColor = SKColor.init(red:1,green:0.75,blue:0.82,alpha:1)
-        
-        self.addPaletteOval(SKColor.redColor(),    row: 1, col: 1);
-        self.addPaletteOval(SKColor.greenColor(),  row: 1, col: 2);
-        self.addPaletteOval(SKColor.blueColor(),   row: 1, col: 3);
-        self.addPaletteOval(SKColor.cyanColor(),   row: 1, col: 5);
-        self.addPaletteOval(SKColor.magentaColor(),row: 1, col: 6);
-        self.addPaletteOval(SKColor.yellowColor(), row: 1, col: 7);
+    func addPalette() {        
+        self.addPaletteOval(Constants.Palette.red,     row: 1, col: 1);
+        self.addPaletteOval(Constants.Palette.green,   row: 1, col: 2);
+        self.addPaletteOval(Constants.Palette.blue,    row: 1, col: 3);
+        self.addPaletteOval(Constants.Palette.cyan,    row: 1, col: 5);
+        self.addPaletteOval(Constants.Palette.magenta, row: 1, col: 6);
+        self.addPaletteOval(Constants.Palette.yellow, row: 1, col: 7);
 
-        self.addPaletteOval(SKColor.purpleColor(),    row: 2, col: 1);
-        self.addPaletteOval(SKColor.brownColor(),     row: 2, col: 2);
-        self.addPaletteOval(SKColor.orangeColor(),    row: 2, col: 3);
-        self.addPaletteOval(pinkColor,                row: 2, col: 4);
-        self.addPaletteOval(SKColor.whiteColor(),     row: 2, col: 5);
-        self.addPaletteOval(SKColor.lightGrayColor(), row: 2, col: 6);
-        self.addPaletteOval(SKColor.blackColor(),     row: 2, col: 7);
+        self.addPaletteOval(Constants.Palette.purple,    row: 2, col: 1);
+        self.addPaletteOval(Constants.Palette.brown,     row: 2, col: 2);
+        self.addPaletteOval(Constants.Palette.orange,    row: 2, col: 3);
+        self.addPaletteOval(Constants.Palette.pink,   row: 2, col: 4);
+        self.addPaletteOval(Constants.Palette.white,     row: 2, col: 5);
+        self.addPaletteOval(Constants.Palette.gray, row: 2, col: 6);
+        self.addPaletteOval(Constants.Palette.black,     row: 2, col: 7);
     }
 
     func addCanvas() {
