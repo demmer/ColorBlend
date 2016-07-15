@@ -110,12 +110,20 @@ class ColorUtilsTests: XCTestCase {
             return strs.joinWithSeparator(" ");
         }
         
+        XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.black)),
+                       "[Black 0 0 0]")
+        XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.white)),
+                       "[White 0 0 100]")
+        XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.gray)),
+                       "[Black 0 0 0] [White 0 0 100] [White 0 0 100]")
         XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.red)),
                        "[Red 360 100 100]")
-        XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.orange)), "[Red 360 100 100] [Yellow 60 100 100]")
+        XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.orange)),
+                       "[Red 360 100 100] [Yellow 60 100 100]")
         XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.brown)),
                        "[Red 360 100 100] [Yellow 60 100 100] [White 0 0 100] [Black 0 0 0] [Black 0 0 0]")
-        XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.pink)), "[Magenta 300 100 100] [Magenta 300 100 100] [Magenta 300 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100]")
+        XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.pink)),
+                       "[Magenta 300 100 100] [Magenta 300 100 100] [Magenta 300 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100]")
     }
     
     func testHSVUnblendAllColors() {

@@ -213,6 +213,10 @@ class ColorUtils {
 
         // Special case the shades of white / gray / black
         if (hueX == 0) {
+            if (val == 1.0) {
+                return [Constants.Palette.white]
+            }
+            
             for _ in 1...100 {
                 var h: CGFloat = 0;
                 var s: CGFloat = 0;
