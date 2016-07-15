@@ -221,19 +221,14 @@ class ColorUtils {
 
                 var delta = abs(v - val);
                 if (delta < 0.01) {
-                    print("greyscale matched val \(v)")
-                    print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
                     return colors
                 } else if (v < val) {
-                    print("greyscale \(v) < \(val) - adding white")
                     colors.append(Constants.Palette.white);
                 } else {
-                    print("greyscale \(v) > \(val) - adding black")
                     colors.append(Constants.Palette.black);
                 }
             }
-            print("greyscale didn't converge after 100 iterations")
-            print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
+
             return colors;
         }
         
@@ -305,7 +300,7 @@ class ColorUtils {
             }
             
         }
-        print("delta \(delta) lowerCount \(lowerCount) upperCount \(upperCount)")
+
         if (lowerCount != 0) {
             for _ in 1...lowerCount {
                 colors.append(lower)
@@ -319,8 +314,6 @@ class ColorUtils {
         }
         
         let hue2 = getHueDegrees(hsvBlend(colors))
-        print("hue \(hue) hue2 \(hue2)")
-    
         var hueColors: [UIColor] = [];
         for hueColor in colors {
             hueColors.append(hueColor)
@@ -337,15 +330,12 @@ class ColorUtils {
                 blendedColor.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
                 
                 if (abs(s - sat) <= 0.005) {
-                    print("matched sat \(sat)")
                     break
                 }
                 
                 if (s > sat) {
-                    print("sat \(sat) current \(s) adding white")
                     colors.append(Constants.Palette.white)
                 } else {
-                    print("sat \(sat) current \(s) need more color")
                     for hueColor in hueColors {
                         colors.append(hueColor)
                     }
@@ -364,23 +354,18 @@ class ColorUtils {
             blendedColor.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
             
             if (abs(v - val) <= 0.005) {
-                print("matched val \(val)")
                 break
             }
             
             if (v > val) {
-                print("val \(val) current \(v) adding black")
                 colors.append(Constants.Palette.black)
             } else {
-                print("val \(val) current \(v) need more color and white")
                 for hueColor in hueColors {
                     colors.append(hueColor)
                 }
                 addWhite()
             }
         }
-        
-        print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
         
         return colors;
     }
