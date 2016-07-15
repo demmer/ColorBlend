@@ -32,6 +32,7 @@ func printFonts() {
 
 
 class GameScene: SKScene {
+    weak var viewController: GameViewController!
     var mode: Mode!;
     var contentCreated: Bool = false;
     var colors: Array<SKColor> = [];
@@ -200,6 +201,12 @@ class GameScene: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first;
         touchStart = touch!.locationInNode(self)
+        
+        let node = self.nodeAtPoint(touchStart)
+        if (node == canvas) {
+            print("Showing table")
+            self.viewController.performSegueWithIdentifier("ShowColorTableSegue", sender: nil)
+        }
     }
 
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {

@@ -10,12 +10,16 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    var currentGame: GameScene!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
         if let scene = GameScene(fileNamed:"ColorBlend") {
+            currentGame = scene
+            scene.viewController = self
+            
             // Configure the view.
             let skView = self.view as! SKView
             scene.backgroundColor = SKColor.whiteColor()
