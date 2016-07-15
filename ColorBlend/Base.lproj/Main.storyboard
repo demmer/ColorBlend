@@ -18,14 +18,14 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="EXg-IC-Hu2" kind="presentation" identifier="ShowColorTableSegue" id="rpQ-tt-vMs"/>
+                        <segue destination="NzB-w3-XeV" kind="presentation" identifier="ShowColorTableSegue" id="rpQ-tt-vMs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="204" y="-56"/>
         </scene>
-        <!--Color Table View Controller-->
+        <!--Select Color-->
         <scene sceneID="nu3-C9-rlY">
             <objects>
                 <tableViewController id="EXg-IC-Hu2" customClass="ColorTableViewController" customModule="ColorBlend" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AQu-QX-0ge">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AQu-QX-0ge" id="UCO-CS-sPu">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -48,14 +48,44 @@
                             <outlet property="delegate" destination="EXg-IC-Hu2" id="ry9-wg-caW"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Select Color" id="6OU-Vi-vHY">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ISl-Sd-qpc">
+                            <connections>
+                                <segue destination="HgZ-EW-df3" kind="unwind" identifier="CancelColorSelectionSegue" unwindAction="colorSelectionComplete:" id="DMz-Xx-pL8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Random" id="EsQ-J7-wLp">
+                            <connections>
+                                <segue destination="HgZ-EW-df3" kind="unwind" identifier="RandomColorSelectionSegue" unwindAction="colorSelectionComplete:" id="bXy-uh-Nhm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="HgZ-EW-df3" kind="unwind" identifier="ColorSelectionCompleteSegue" unwindAction="colorSelectionComplete:" id="ZoE-Li-BAj"/>
+                        <segue destination="HgZ-EW-df3" kind="unwind" identifier="ColorSelectionSegue" unwindAction="colorSelectionComplete:" id="ZoE-Li-BAj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8d-Hg-aiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HgZ-EW-df3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="847" y="-56"/>
+            <point key="canvasLocation" x="1659" y="-56"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="izr-gG-ac2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NzB-w3-XeV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rh9-Oh-DUD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EXg-IC-Hu2" kind="relationship" relationship="rootViewController" id="mh7-Ql-reJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uUl-46-ifM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939" y="-56"/>
         </scene>
     </scenes>
 </document>

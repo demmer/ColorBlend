@@ -67,10 +67,9 @@ class ColorTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("selected \(indexPath.row)")
         selectedColor = colors[indexPath.row].name
-        self.performSegueWithIdentifier("ColorSelectionCompleteSegue", sender: self);
+        self.performSegueWithIdentifier("ColorSelectionSegue", sender: self);
     }
-    
+
     
 }

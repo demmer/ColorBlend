@@ -14,9 +14,15 @@ class GameViewController: UIViewController {
     
     @IBAction func colorSelectionComplete(sender: UIStoryboardSegue) {
         let table = sender.sourceViewController as! ColorTableViewController
-        print("selected color \(table.selectedColor)")
-        currentGame.reset()
-        currentGame.showBlend(table.selectedColor!)
+        if (sender.identifier == "ColorSelectionSegue") {
+            currentGame.reset()
+            currentGame.showBlend(table.selectedColor!)
+        } else if (sender.identifier == "CancelColorSelectionSegue") {
+            // no-op
+        } else if (sender.identifier == "RandomColorSelectionSegue") {
+            let i = arc4random_uniform(UInt32(ColorName.ColorNames.count))
+            currentGame.showBlend(ColorName.ColorNames[Int(i)].name)
+        }
     }
 
     override func viewDidLoad() {
