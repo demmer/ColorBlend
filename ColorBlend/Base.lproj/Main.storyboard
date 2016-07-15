@@ -23,11 +23,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="204" y="-56"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Color Table View Controller-->
         <scene sceneID="nu3-C9-rlY">
             <objects>
-                <tableViewController id="EXg-IC-Hu2" sceneMemberID="viewController">
+                <tableViewController id="EXg-IC-Hu2" customClass="ColorTableViewController" customModule="ColorBlend" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bKM-TY-3EW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,14 +44,18 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="EXg-IC-Hu2" id="Wpf-aE-hA1"/>
+                            <outlet property="dataSource" destination="EXg-IC-Hu2" id="DLz-FL-tHb"/>
                             <outlet property="delegate" destination="EXg-IC-Hu2" id="ry9-wg-caW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="HgZ-EW-df3" kind="unwind" identifier="ColorSelectionCompleteSegue" unwindAction="colorSelectionComplete:" id="ZoE-Li-BAj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8d-Hg-aiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="HgZ-EW-df3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="383" y="1049"/>
+            <point key="canvasLocation" x="847" y="-56"/>
         </scene>
     </scenes>
 </document>

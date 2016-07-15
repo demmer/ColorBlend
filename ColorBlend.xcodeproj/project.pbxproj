@@ -18,6 +18,7 @@
 		D72271471CF62AD200EE4770 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271461CF62AD200EE4770 /* ResetButton.swift */; };
 		D72271491CF62C2D00EE4770 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72271481CF62C2D00EE4770 /* Constants.swift */; };
 		D722714B1CF6356000EE4770 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722714A1CF6356000EE4770 /* ColorUtils.swift */; };
+		D780C3841D38948000D2D1EB /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D780C3831D38948000D2D1EB /* ColorTableViewController.swift */; };
 		D7885C101D0A2E8B00F78C6D /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7885C0F1D0A2E8B00F78C6D /* ColorWheel.swift */; };
 		D7E1EF701CF69DCC00443610 /* ColorUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EF6F1CF69DCC00443610 /* ColorUtilsTests.swift */; };
 		D7E1EF781CF6A1EE00443610 /* ColorName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EF771CF6A1EE00443610 /* ColorName.swift */; };
@@ -48,6 +49,7 @@
 		D72271461CF62AD200EE4770 /* ResetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		D72271481CF62C2D00EE4770 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D722714A1CF6356000EE4770 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		D780C3831D38948000D2D1EB /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 		D7885C0F1D0A2E8B00F78C6D /* ColorWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
 		D7E1EF6D1CF69DCC00443610 /* ColorBlendTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorBlendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E1EF6F1CF69DCC00443610 /* ColorUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtilsTests.swift; sourceTree = "<group>"; };
@@ -97,15 +99,16 @@
 			children = (
 				D70F06C51CBDC1E800581E76 /* AppDelegate.swift */,
 				D70F06C71CBDC1E800581E76 /* ColorBlend.sks */,
+				D70F06CB1CBDC1E800581E76 /* ColorBlendViewController.swift */,
 				D70F06C91CBDC1E800581E76 /* ColorBlend.swift */,
 				D722714A1CF6356000EE4770 /* ColorUtils.swift */,
 				D7E1EF771CF6A1EE00443610 /* ColorName.swift */,
+				D780C3831D38948000D2D1EB /* ColorTableViewController.swift */,
 				D72271441CF6023500EE4770 /* IconButton.swift */,
 				D7F4E6831CFA922300742687 /* ColorLevel.swift */,
 				D7885C0F1D0A2E8B00F78C6D /* ColorWheel.swift */,
 				D72271481CF62C2D00EE4770 /* Constants.swift */,
 				D72271461CF62AD200EE4770 /* ResetButton.swift */,
-				D70F06CB1CBDC1E800581E76 /* ColorBlendViewController.swift */,
 				D70F06CD1CBDC1E800581E76 /* Main.storyboard */,
 				D70F06D01CBDC1E800581E76 /* Assets.xcassets */,
 				D70F06D21CBDC1E800581E76 /* LaunchScreen.storyboard */,
@@ -238,6 +241,7 @@
 				D70F06C61CBDC1E800581E76 /* AppDelegate.swift in Sources */,
 				D7E1EF781CF6A1EE00443610 /* ColorName.swift in Sources */,
 				D72271491CF62C2D00EE4770 /* Constants.swift in Sources */,
+				D780C3841D38948000D2D1EB /* ColorTableViewController.swift in Sources */,
 				D7885C101D0A2E8B00F78C6D /* ColorWheel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

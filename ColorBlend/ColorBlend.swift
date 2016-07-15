@@ -87,7 +87,8 @@ class GameScene: SKScene {
         label.verticalAlignmentMode = .Bottom
         label.fontColor = SKColor.blackColor()
         
-        counts[shape.fillColor] = label
+//        counts[shape.fillColor] = label
+        counts[color] = label
         
         self.addChild(label)
     }
@@ -257,7 +258,7 @@ class GameScene: SKScene {
         }
     }
     
-    func addColor(color: SKColor) {
+    func addColor(color: SKColor, update: Bool = true) {
         colors.append(color)
         
         let countLabel = counts[color]!
@@ -269,7 +270,9 @@ class GameScene: SKScene {
         }
         countLabel.text = String(count!)
         
-        updateCanvas();
+        if (update) {
+            updateCanvas();
+        }
     }
     
     func reset() {
@@ -319,6 +322,17 @@ class GameScene: SKScene {
         self.colorWheel.hue = hue;
     }
    
+    func showBlend(colorName: String) {
+        let spec = ColorName.get(colorName)!
+        let color = UIColor(red: spec.red, green: spec.green, blue: spec.blue, alpha: 1)
+        let blend = ColorUtils.hsvUnblend(color)
+        for color in blend {
+            self.addColor(color, update: false)
+        }
+        self.updateCanvas()
+        self.updateStatus()
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
