@@ -32,11 +32,18 @@ class ColorUtilsTests: XCTestCase {
         XCTAssertEqual(ColorName.closestMatch(UIColor.init(red: 0, green: 0.079, blue: 0.6588235294117647, alpha: 1.0)), "Zaffre")
     }
     
+    func testNoDuplicateNames() {
+        for spec in ColorName.ColorNames {
+            let color = UIColor.init(red: spec.red, green: spec.green, blue: spec.blue, alpha: 1)
+            XCTAssertEqual(ColorName.closestMatch(color), spec.name)
+        }
+    }
+    
     func testHSVBlend() {
         XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.redColor()])), "Red")
         XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.blueColor()])), "Blue")
         XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.redColor(), UIColor.blueColor()])), "Magenta")
-        XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.yellowColor(), UIColor.blueColor()])), "Guppie green")
+        XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.yellowColor(), UIColor.blueColor()])), "Spring green")
         XCTAssertEqual(ColorName.closestMatch(ColorUtils.hsvBlend([UIColor.redColor(), UIColor.redColor(), UIColor.greenColor()])), "Orange")
         
 
