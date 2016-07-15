@@ -4,13 +4,6 @@
 //
 //  Created by Michael Demmer on 4/12/16.
 //  Copyright (c) 2016 Michael Demmer. All rights reserved.
-//
-//
-// TODO:
-// - Add counts for each color in the palette
-// - Rearrange so the controls are on the bottom
-// - Add animation when the palette is touched
-// - Add Magenta or replace
 
 import SpriteKit;
 
@@ -37,7 +30,7 @@ class GameScene: SKScene {
     var contentCreated: Bool = false;
     var colors: Array<SKColor> = [];
     var palette: Set<SKNode> = [];
-    var counts: Dictionary<SKColor, SKLabelNode> = [:];
+    var counts: Dictionary<String, SKLabelNode> = [:];
     var canvas: SKShapeNode!;
     var currentColor: SKColor!;
     var touchStart: CGPoint!;
@@ -87,7 +80,8 @@ class GameScene: SKScene {
         label.verticalAlignmentMode = .Bottom
         label.fontColor = SKColor.blackColor()
         
-        counts[color] = label
+        let name = ColorName.closestMatch(color)
+        counts[name] = label
         
         self.addChild(label)
     }
@@ -258,9 +252,10 @@ class GameScene: SKScene {
     }
     
     func addColor(color: SKColor, update: Bool = true) {
+        let name = ColorName.closestMatch(color)
         colors.append(color)
         
-        let countLabel = counts[color]!
+        let countLabel = counts[name]!
         var count = Int(countLabel.text!)
         if (count == nil) {
             count = 1
