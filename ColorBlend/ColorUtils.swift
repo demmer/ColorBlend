@@ -191,99 +191,6 @@ class ColorUtils {
     
     // Given a color, return the blend of primary colors that will produce the blend
     static func hsvUnblend(color: UIColor) -> [UIColor] {
-        var hueX: CGFloat = 0;
-        var sat: CGFloat = 0;
-        var val: CGFloat = 0;
-        color.getHue(&hueX, saturation: &sat, brightness: &val, alpha: nil)
-
-        let hue = getHueDegrees(color)
-        
-        // Initialize with the closest primary color.
-        var colors: [UIColor] = [closestPrimaryColor(color)];
-
-        // Then loop over by adding the next closest primary hues, either above or below.
-        let lower = PrimaryHues[(hue / 60) * 60]!
-        let upper = PrimaryHues[((hue + 59) / 60) * 60]!
-        for _ in 1...100 {
-            let hue2 = getHueDegrees(hsvBlend(colors))
-            let delta = abs(hue - hue2);
-            if (delta == 0) {
-                print("matched hue \(hue)")
-                break // all done
-            }
-            
-            if (hue < hue2) {
-                print("hue \(hue) current \(hue2) adding lower \(getHueDegrees(lower))")
-                colors.append(lower)
-            } else {
-                print("hue \(hue) current \(hue2) adding upper \(getHueDegrees(upper))")
-                colors.append(upper)
-            }
-
-            let hue3 = getHueDegrees(hsvBlend(colors))
-            let delta2 = abs(hue - hue3)
-            if (hue3 == hue2 || (delta2 > delta && delta2 < 5) || (delta2 == delta && delta2 == 1)) {
-                print("last color didn't improve hue \(hue2) -> \(hue3) -- removing")
-                colors.popLast()
-                break
-            }
-
-        }
-        
-        var hueColors: [UIColor] = [];
-        for hueColor in colors {
-            hueColors.append(hueColor)
-        }
-        
-        // Next, add some white to drop down the saturation as needed
-        for _ in 1...100 {
-            var h: CGFloat = 0;
-            var s: CGFloat = 0;
-            var v: CGFloat = 0;
-            
-            let blendedColor = hsvBlend(colors)
-            blendedColor.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
-            
-            if (abs(s - sat) <= 0.01) {
-                print("matched sat \(sat)")
-                break
-            }
-            
-            if (s > sat) {
-                print("sat \(sat) current \(s) adding white")
-                colors.append(Constants.Palette.white)
-            } else {
-                print("sat \(sat) current \(s) need more color")
-                for hueColor in hueColors {
-                    colors.append(hueColor)
-                }
-                break
-            }
-        }
-
-        // Finally, add some black to drop down the value as needed
-        for _ in 1...100 {
-            var h: CGFloat = 0;
-            var s: CGFloat = 0;
-            var v: CGFloat = 0;
-            
-            let blendedColor = hsvBlend(colors)
-            blendedColor.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
-            
-            if (abs(v - val) <= 0.01) {
-                print("matched val \(val)")
-                break
-            }
-            
-            if (v > val) {
-                print("val \(val) current \(v) adding black")
-                colors.append(Constants.Palette.black)
-            } else {
-                print("ERROR! val \(val) current \(v) need more color")
-                break
-            }
-        }
-        
         func describe(color: UIColor) -> String {
             var h: CGFloat = 0;
             var s: CGFloat = 0;
@@ -293,6 +200,194 @@ class ColorUtils {
             let name = ColorName.closestMatch(color);
             let colorStr = "[\(name) \(String(Int(h * 360))) \(String(Int(s * 100))) \(String(Int(v * 100)))]";
             return colorStr;
+        }
+        
+        var hueX: CGFloat = 0;
+        var sat: CGFloat = 0;
+        var val: CGFloat = 0;
+        color.getHue(&hueX, saturation: &sat, brightness: &val, alpha: nil)
+
+        let hue = getHueDegrees(color)
+        
+        var colors: [UIColor] = [];
+
+        // Special case the shades of white / gray / black
+        if (hueX == 0) {
+            for _ in 1...100 {
+                var h: CGFloat = 0;
+                var s: CGFloat = 0;
+                var v: CGFloat = 0;
+                hsvBlend(colors).getHue(&h, saturation: &s, brightness: &v, alpha: nil)
+
+                var delta = abs(v - val);
+                if (delta < 0.01) {
+                    print("greyscale matched val \(v)")
+                    print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
+                    return colors
+                } else if (v < val) {
+                    print("greyscale \(v) < \(val) - adding white")
+                    colors.append(Constants.Palette.white);
+                } else {
+                    print("greyscale \(v) > \(val) - adding black")
+                    colors.append(Constants.Palette.black);
+                }
+/*
+                hsvBlend(colors).getHue(&h, saturation: &s, brightness: &v, alpha: nil)
+                var delta2 = abs(v - val)
+                if (delta2 > delta) {
+                    print("last change worsened delta \(delta) -> \(delta2)")
+                    colors.popLast()
+                    print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
+                    return colors
+                }
+ */
+            }
+            print("greyscale didn't converge after 100 iterations")
+            print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
+            return colors;
+        }
+        
+        // Figure out the blend of primary hues based on the delta
+        let hueBlends: [Int:(Int, Int)] = [
+            0: (1, 0),
+            1: (30, 1),
+            2: (20, 1),
+            3: (15, 1),
+            4: (10, 1),
+            5: (8, 1),
+            6: (7, 1),
+            7: (6, 1),
+            8: (5, 1),
+            9: (9, 2),
+            10: (4, 1),
+            11: (11, 3),
+            12: (7, 2),
+            13: (3, 1),
+            14: (11, 4),
+            15: (14, 5),
+            16: (8, 3),
+            17: (9, 4),
+            18: (21, 10),
+            19: (2, 1),
+            20: (2, 1),
+            21: (7, 4),
+            22: (8, 5),
+            23: (3, 2),
+            24: (7, 5),
+            25: (12, 9),
+            26: (5, 4),
+            27: (7, 6),
+            28: (9, 8),
+            29: (1, 1),
+            30: (1, 1),
+            
+            42: (4, 9),
+            43: (2, 5),
+            46: (1, 3),
+            50: (2, 9),
+            52: (1, 6),
+            56: (1, 14),
+            57: (1, 20),
+            58: (1, 30)
+        ]
+        
+        let lowerHue = (hue / 60) * 60
+        let upperHue = ((hue + 59) / 60) * 60
+        let lower = PrimaryHues[lowerHue]!
+        let upper = PrimaryHues[upperHue]!
+        
+        let delta = abs(hue - lowerHue)
+        var lowerCount = 0
+        var upperCount = 0
+        if (delta <= 30) {
+            let hueBlend = hueBlends[delta]!
+            lowerCount = hueBlend.0
+            upperCount = hueBlend.1
+        } else {
+            if (hueBlends[delta] != nil) {
+                let hueBlend = hueBlends[delta]!
+                lowerCount = hueBlend.0
+                upperCount = hueBlend.1
+            } else {
+                let hueBlend = hueBlends[60 - delta]!
+                lowerCount = hueBlend.1
+                upperCount = hueBlend.0
+            }
+            
+        }
+        print("delta \(delta) lowerCount \(lowerCount) upperCount \(upperCount)")
+        if (lowerCount != 0) {
+            for _ in 1...lowerCount {
+                colors.append(lower)
+            }
+        }
+
+        if (upperCount != 0) {
+            for _ in 1...upperCount {
+                colors.append(upper)
+            }
+        }
+        
+        let hue2 = getHueDegrees(hsvBlend(colors))
+        print("hue \(hue) hue2 \(hue2)")
+    
+        var hueColors: [UIColor] = [];
+        for hueColor in colors {
+            hueColors.append(hueColor)
+        }
+    
+        // Next, add some white to drop down the saturation as needed
+        func addWhite() {
+            for _ in 1...500 {
+                var h: CGFloat = 0;
+                var s: CGFloat = 0;
+                var v: CGFloat = 0;
+                
+                let blendedColor = hsvBlend(colors)
+                blendedColor.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
+                
+                if (abs(s - sat) <= 0.005) {
+                    print("matched sat \(sat)")
+                    break
+                }
+                
+                if (s > sat) {
+                    print("sat \(sat) current \(s) adding white")
+                    colors.append(Constants.Palette.white)
+                } else {
+                    print("sat \(sat) current \(s) need more color")
+                    for hueColor in hueColors {
+                        colors.append(hueColor)
+                    }
+                }
+            }
+        }
+        addWhite()
+
+        // Finally, add some black to drop down the value as needed
+        for _ in 1...500 {
+            var h: CGFloat = 0;
+            var s: CGFloat = 0;
+            var v: CGFloat = 0;
+            
+            let blendedColor = hsvBlend(colors)
+            blendedColor.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
+            
+            if (abs(v - val) <= 0.005) {
+                print("matched val \(val)")
+                break
+            }
+            
+            if (v > val) {
+                print("val \(val) current \(v) adding black")
+                colors.append(Constants.Palette.black)
+            } else {
+                print("val \(val) current \(v) need more color and white")
+                for hueColor in hueColors {
+                    colors.append(hueColor)
+                }
+                addWhite()
+            }
         }
         
         print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
