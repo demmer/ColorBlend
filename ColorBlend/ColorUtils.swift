@@ -231,16 +231,6 @@ class ColorUtils {
                     print("greyscale \(v) > \(val) - adding black")
                     colors.append(Constants.Palette.black);
                 }
-/*
-                hsvBlend(colors).getHue(&h, saturation: &s, brightness: &v, alpha: nil)
-                var delta2 = abs(v - val)
-                if (delta2 > delta) {
-                    print("last change worsened delta \(delta) -> \(delta2)")
-                    colors.popLast()
-                    print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
-                    return colors
-                }
- */
             }
             print("greyscale didn't converge after 100 iterations")
             print("unblend done \(describe(color)) => \(describe(hsvBlend(colors)))")
