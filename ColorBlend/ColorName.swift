@@ -13,12 +13,14 @@ class ColorName {
     var green: CGFloat;
     var blue: CGFloat;
     var name: String;
+    var color: UIColor;
     
     init(_ name: String, red: CGFloat, green: CGFloat, blue: CGFloat) {
         self.name = name
         self.red = red
         self.green = green
         self.blue = blue
+        self.color = UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
     static func get(name: String) -> ColorName? {
@@ -55,6 +57,7 @@ class ColorName {
         
         return name;
     }
+    
     
     static var ColorNames: [ColorName] = [
         ColorName("Air Force blue", red: 0.36470588235294116, green: 0.5411764705882353, blue: 0.6588235294117647),

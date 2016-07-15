@@ -87,7 +87,6 @@ class GameScene: SKScene {
         label.verticalAlignmentMode = .Bottom
         label.fontColor = SKColor.blackColor()
         
-//        counts[shape.fillColor] = label
         counts[color] = label
         
         self.addChild(label)

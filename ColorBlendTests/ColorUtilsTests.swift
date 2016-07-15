@@ -121,8 +121,7 @@ class ColorUtilsTests: XCTestCase {
     func testHSVUnblendAllColors() {
         func getBlend(spec: ColorName) -> UIColor {
             print("Testing unblend for \(spec.name)")
-            let color = UIColor(red: spec.red, green: spec.green, blue: spec.blue, alpha: 1)
-            let components = ColorUtils.hsvUnblend(color)
+            let components = ColorUtils.hsvUnblend(spec.color)
             let blend = ColorUtils.hsvBlend(components)
             return blend;
         }

@@ -26,30 +26,49 @@ extension UIImage {
 
 class ColorTableViewController: UITableViewController {
     var selectedColor: String?
+    var colors: [ColorName] = [];
+    
+    func initColors() {
+        colors = ColorName.ColorNames.sort({ (a: ColorName, b: ColorName) -> Bool in
+            var h: CGFloat = 0
+            var h2: CGFloat = 0
+            var s: CGFloat = 0
+            var s2: CGFloat = 0
+            var v: CGFloat = 0
+            var v2: CGFloat = 0
+            
+            a.color.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
+            b.color.getHue(&h2, saturation: &s2, brightness: &v2, alpha: nil)
+            
+            return h < h2 || (h == h2 && v < v2) || (h == h2 && v == v2 && s < s2)
+        })
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ColorName.ColorNames.count
+        if (colors.count == 0) {
+            self.initColors()
+        }
+        return colors.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let spec = ColorName.ColorNames[indexPath.row]
+        let spec = colors[indexPath.row]
         var cell = tableView.dequeueReusableCellWithIdentifier(spec.name)
         if (cell == nil) {
             cell = UITableViewCell(style:UITableViewCellStyle.Default, reuseIdentifier: spec.name);
             cell!.textLabel!.text = spec.name
-            let color = UIColor(red: spec.red, green: spec.green, blue: spec.blue, alpha: 1)
-            cell!.imageView!.image = UIImage.coloredSquare(color, size: 30.0)
+            cell!.imageView!.image = UIImage.coloredSquare(spec.color, size: 30.0)
         }
         return cell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected \(indexPath.row)")
-        selectedColor = ColorName.ColorNames[indexPath.row].name
+        selectedColor = colors[indexPath.row].name
         self.performSegueWithIdentifier("ColorSelectionCompleteSegue", sender: self);
     }
     
