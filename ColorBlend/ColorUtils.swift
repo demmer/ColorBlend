@@ -189,6 +189,50 @@ class ColorUtils {
         return PrimaryHues[primaryHue]!
     }
     
+    // Figure out the blend of primary hues based on the delta
+    static let hueBlends: [Int:(Int, Int)] = [
+        0: (1, 0),
+        1: (30, 1),
+        2: (20, 1),
+        3: (15, 1),
+        4: (10, 1),
+        5: (8, 1),
+        6: (7, 1),
+        7: (6, 1),
+        8: (5, 1),
+        9: (9, 2),
+        10: (4, 1),
+        11: (11, 3),
+        12: (7, 2),
+        13: (3, 1),
+        14: (11, 4),
+        15: (14, 5),
+        16: (8, 3),
+        17: (9, 4),
+        18: (21, 10),
+        19: (2, 1),
+        20: (2, 1),
+        21: (7, 4),
+        22: (8, 5),
+        23: (3, 2),
+        24: (7, 5),
+        25: (12, 9),
+        26: (5, 4),
+        27: (7, 6),
+        28: (9, 8),
+        29: (1, 1),
+        30: (1, 1),
+        
+        42: (4, 9),
+        43: (2, 5),
+        46: (1, 3),
+        50: (2, 9),
+        52: (1, 6),
+        56: (1, 14),
+        57: (1, 20),
+        58: (1, 30)
+    ]
+    
     // Given a color, return the blend of primary colors that will produce the blend
     static func hsvUnblend(color: UIColor) -> [UIColor] {
         func describe(color: UIColor) -> String {
@@ -236,49 +280,6 @@ class ColorUtils {
             return colors;
         }
         
-        // Figure out the blend of primary hues based on the delta
-        let hueBlends: [Int:(Int, Int)] = [
-            0: (1, 0),
-            1: (30, 1),
-            2: (20, 1),
-            3: (15, 1),
-            4: (10, 1),
-            5: (8, 1),
-            6: (7, 1),
-            7: (6, 1),
-            8: (5, 1),
-            9: (9, 2),
-            10: (4, 1),
-            11: (11, 3),
-            12: (7, 2),
-            13: (3, 1),
-            14: (11, 4),
-            15: (14, 5),
-            16: (8, 3),
-            17: (9, 4),
-            18: (21, 10),
-            19: (2, 1),
-            20: (2, 1),
-            21: (7, 4),
-            22: (8, 5),
-            23: (3, 2),
-            24: (7, 5),
-            25: (12, 9),
-            26: (5, 4),
-            27: (7, 6),
-            28: (9, 8),
-            29: (1, 1),
-            30: (1, 1),
-            
-            42: (4, 9),
-            43: (2, 5),
-            46: (1, 3),
-            50: (2, 9),
-            52: (1, 6),
-            56: (1, 14),
-            57: (1, 20),
-            58: (1, 30)
-        ]
         
         let lowerHue = (hue / 60) * 60
         let upperHue = ((hue + 59) / 60) * 60
@@ -302,7 +303,6 @@ class ColorUtils {
                 lowerCount = hueBlend.1
                 upperCount = hueBlend.0
             }
-            
         }
 
         if (lowerCount != 0) {
