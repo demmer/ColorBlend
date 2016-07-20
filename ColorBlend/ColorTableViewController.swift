@@ -24,24 +24,44 @@ extension UIImage {
     }
 }
 
-class ColorTableViewController: UITableViewController {
+class ColorTableViewController: UITableViewController, UISearchResultsUpdating {
     var selectedColor: String?
+    var allColors: [ColorName] = [];
     var colors: [ColorName] = [];
+    let searchController = UISearchController(searchResultsController: nil)
+
+    override func viewDidLoad() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+    }
+
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let search = searchController.searchBar.text!.lowercaseString
+        colors = allColors.filter { color in
+            return search == "" || color.name.lowercaseString.containsString(search)
+        }
+        
+        tableView.reloadData()
+    }
     
     func initColors() {
-        colors = ColorName.ColorNames.sort({ (a: ColorName, b: ColorName) -> Bool in
+        allColors = ColorName.ColorNames.sort({ (a: ColorName, b: ColorName) -> Bool in
             var h: CGFloat = 0
             var h2: CGFloat = 0
             var s: CGFloat = 0
             var s2: CGFloat = 0
             var v: CGFloat = 0
-            var v2: CGFloat = 0
+            var v2: CGFloat = 0	
             
             a.color.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
             b.color.getHue(&h2, saturation: &s2, brightness: &v2, alpha: nil)
             
             return h < h2 || (h == h2 && v < v2) || (h == h2 && v == v2 && s < s2)
         })
+
+        colors = allColors
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -49,7 +69,7 @@ class ColorTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (colors.count == 0) {
+        if (allColors.count == 0) {
             self.initColors()
         }
         return colors.count
@@ -68,7 +88,9 @@ class ColorTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedColor = colors[indexPath.row].name
-        self.performSegueWithIdentifier("ColorSelectionSegue", sender: self);
+        dispatch_async(dispatch_get_main_queue(),{
+            self.performSegueWithIdentifier("ColorSelectionSegue", sender: self);
+        })
     }
 
     

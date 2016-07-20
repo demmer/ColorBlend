@@ -33,9 +33,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="gZ3-fP-WVS">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="EXg-IC-Hu2" id="Vsp-xV-Qpz"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="AQu-QX-0ge">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AQu-QX-0ge" id="UCO-CS-sPu">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -61,11 +69,21 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="HgZ-EW-df3" kind="unwind" identifier="ColorSelectionSegue" unwindAction="colorSelectionComplete:" id="ZoE-Li-BAj"/>
+                        <outlet property="searchDisplayController" destination="VGM-Sz-nSN" id="biG-VZ-65B"/>
+                        <segue destination="HgZ-EW-df3" kind="unwind" identifier="ColorSelectionSegue" animates="NO" unwindAction="colorSelectionComplete:" id="ZoE-Li-BAj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8d-Hg-aiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HgZ-EW-df3" userLabel="Exit" sceneMemberID="exit"/>
+                <searchDisplayController id="VGM-Sz-nSN">
+                    <connections>
+                        <outlet property="delegate" destination="EXg-IC-Hu2" id="fR9-Fe-4bg"/>
+                        <outlet property="searchBar" destination="gZ3-fP-WVS" id="T4N-zY-1Vy"/>
+                        <outlet property="searchContentsController" destination="EXg-IC-Hu2" id="ays-dV-W8Q"/>
+                        <outlet property="searchResultsDataSource" destination="EXg-IC-Hu2" id="FKT-Yi-Yie"/>
+                        <outlet property="searchResultsDelegate" destination="EXg-IC-Hu2" id="Urb-Ez-BmJ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1659" y="-56"/>
         </scene>
