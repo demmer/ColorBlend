@@ -26,7 +26,9 @@ class ColorBlendScene: SKScene {
     var canvas: SKShapeNode!;
     var currentColor: SKColor!;
     var touchStart: CGPoint!;
+    var touchStartNode: SKNode!;
     var dragger: SKShapeNode!;
+
     var dragColor: SKColor!;
     var resetButton: ResetButton!;
     var colorLabel: SKLabelNode!;
@@ -189,29 +191,31 @@ class ColorBlendScene: SKScene {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first;
         touchStart = touch!.locationInNode(self)
-        
-        let node = self.nodeAtPoint(touchStart)
-        if (node == canvas) {
-            print("Showing table")
+        touchStartNode = self.nodeAtPoint(touchStart)
+        if (touchStartNode == canvas) {
             self.viewController.performSegueWithIdentifier("ShowColorTableSegue", sender: nil)
         }
     }
 
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if (touches.count == 0) {
+            return
+        }
+        
         let touch = touches.first!;
 
+        // Check if we're already dragging a palette node -- if so just update its position
         if (self.dragger != nil) {
             self.dragger.position = touch.locationInNode(self);
-
-        } else {
-            // Check if the dragging started at a palette node -- if so create a new dragger.
-            let node = self.nodeAtPoint(touchStart)
-            if (self.palette.contains(node)) {
-                self.dragger = node.copy() as! SKShapeNode;
-                self.dragColor = (node as! SKShapeNode).fillColor
-                self.addChild(self.dragger);
-            }
+            
+        // Check if the dragging started at a palette node -- if so create a new dragger.
+        } else if (self.palette.contains(touchStartNode)) {
+            self.dragger = touchStartNode.copy() as! SKShapeNode;
+            self.dragColor = (touchStartNode as! SKShapeNode).fillColor
+            self.addChild(self.dragger);
         }
+        
+        
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
