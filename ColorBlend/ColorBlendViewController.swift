@@ -9,8 +9,8 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
-    var currentGame: GameScene!
+class ColorBlendViewController: UIViewController {
+    var currentGame: ColorBlendScene!
     
     @IBAction func colorSelectionComplete(sender: UIStoryboardSegue) {
         let table = sender.sourceViewController as! ColorTableViewController
@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = GameScene(fileNamed:"ColorBlend") {
+        if let scene = ColorBlendScene(fileNamed:"ColorBlend") {
             currentGame = scene
             scene.viewController = self
             

@@ -12,8 +12,8 @@ enum Mode {
     case HSV
 };
 
-class GameScene: SKScene {
-    weak var viewController: GameViewController!
+class ColorBlendScene: SKScene {
+    weak var viewController: ColorBlendViewController!
     var mode: Mode!;
     var contentCreated: Bool = false;
     var colors: Array<SKColor> = [];
