@@ -25,6 +25,7 @@ class ColorLevel: SKNode {
     let margin = 5;
     var barY: Int;
     var level: CGFloat;
+    var levelUpdated:Bool;
     
     init(title titleString: String, color: SKColor, width: CGFloat, height: CGFloat) {
         self.color = color;
@@ -50,10 +51,14 @@ class ColorLevel: SKNode {
 
         outline = SKShapeNode(rect: CGRect(x: 0, y: barY, width: barWidth, height: barHeight))
         outline.strokeColor = color;
+        outline.name = "ColorLevel-Outline-" + title.text!
 
         level = 1
+        levelUpdated = false
 
         super.init()
+        
+        self.userInteractionEnabled = true
         
         title.position = CGPoint(x: self.centerX(title), y: barY + barHeight + 5)
         levelLabel.position = CGPoint(x: 0, y: 0)
@@ -78,6 +83,7 @@ class ColorLevel: SKNode {
         fill = SKShapeNode(rect: CGRect(x: 0, y: barY, width: barWidth, height: Int(CGFloat(barHeight) * level)))
         fill.strokeColor = color;
         fill.fillColor = color;
+        fill.name = "ColorLevel-Fill-" + title.text!
         
         self.addChild(fill)
         
@@ -85,6 +91,23 @@ class ColorLevel: SKNode {
         levelLabel.position = CGPoint(x: centerX(levelLabel), y: 0);
     }
     
+    func updateFromTouch(touch: UITouch) {
+        let location = touch.locationInNode(self)
+        var newLevel = (location.y - CGFloat(barY)) / outline.frame.height
+        newLevel = max(0, min(1, newLevel))
+        self.update(newLevel)
+        self.levelUpdated = true
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.updateFromTouch(touches.first!)
+    }
+
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.updateFromTouch(touches.first!)
+        (self.parent!.parent! as! ColorBlendScene).updateBlendFromLevel(self)
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

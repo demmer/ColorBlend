@@ -16,12 +16,12 @@ class ColorBlendViewController: UIViewController {
         let table = sender.sourceViewController as! ColorTableViewController
         if (sender.identifier == "ColorSelectionSegue") {
             currentGame.reset()
-            currentGame.showBlend(table.selectedColor!)
+            currentGame.showBlend(colorName: table.selectedColor!)
         } else if (sender.identifier == "CancelColorSelectionSegue") {
             // no-op
         } else if (sender.identifier == "RandomColorSelectionSegue") {
             let i = arc4random_uniform(UInt32(ColorName.ColorNames.count))
-            currentGame.showBlend(ColorName.ColorNames[Int(i)].name)
+            currentGame.showBlend(colorName: ColorName.ColorNames[Int(i)].name)
         }
     }
 

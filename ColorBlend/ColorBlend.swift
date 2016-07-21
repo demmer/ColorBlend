@@ -317,15 +317,36 @@ class ColorBlendScene: SKScene {
         self.colorWheel.hue = hue;
     }
    
-    func showBlend(colorName: String) {
+    func showBlend(colorName colorName: String) {
         let spec = ColorName.get(colorName)!
         let color = UIColor(red: spec.red, green: spec.green, blue: spec.blue, alpha: 1)
+        showBlend(color: color)
+    }
+    
+    func showBlend(color color: UIColor) {
         let blend = ColorUtils.hsvUnblend(color)
         for color in blend {
-            self.addColor(color, update: false)
+            self.addColor(color, redraw: false)
         }
         self.updateCanvas()
+        self.updateCounters()
         self.updateStatus()
+    }
+    
+    func updateBlendFromLevel(level: ColorLevel) {
+        if (level == redLevel || level == greenLevel || level == blueLevel) {
+            let newColor = UIColor(red: redLevel.level, green: greenLevel.level, blue: blueLevel.level, alpha: 1);
+            reset()
+            showBlend(color: newColor)
+        } else {
+            updateBlendFromColorWheel()
+        }
+    }
+    
+    func updateBlendFromColorWheel() {
+        let newColor = UIColor(hue: colorWheel.hue, saturation: satLevel.level, brightness: valLevel.level, alpha: 1)
+        reset()
+        showBlend(color: newColor)
     }
     
     override func update(currentTime: CFTimeInterval) {
