@@ -18,7 +18,11 @@ class ColorBlendScene: SKScene {
     var contentCreated: Bool = false;
     var colors: Array<SKColor> = [];
     var palette: Set<SKNode> = [];
-    var counts: Dictionary<String, SKLabelNode> = [:];
+    struct Counter {
+        var count: Int = 0
+        var label: SKLabelNode?
+    }
+    var counts: Dictionary<String, Counter> = [:];
     var canvas: SKShapeNode!;
     var currentColor: SKColor!;
     var touchStart: CGPoint!;
@@ -69,7 +73,9 @@ class ColorBlendScene: SKScene {
         label.fontColor = SKColor.blackColor()
         
         let name = ColorName.closestMatch(color)
-        counts[name] = label
+        var counter = Counter()
+        counter.label = label
+        counts[name] = counter
         
         self.addChild(label)
     }
@@ -239,20 +245,14 @@ class ColorBlendScene: SKScene {
         }
     }
     
-    func addColor(color: SKColor, update: Bool = true) {
+    func addColor(color: SKColor, redraw: Bool = true) {
         let name = ColorName.closestMatch(color)
         colors.append(color)
         
-        let countLabel = counts[name]!
-        var count = Int(countLabel.text!)
-        if (count == nil) {
-            count = 1
-        } else {
-            count = count! + 1
-        }
-        countLabel.text = String(count!)
+        counts[name]!.count += 1
         
-        if (update) {
+        if (redraw) {
+            counts[name]!.label!.text = String(counts[name]!.count)
             updateCanvas();
         }
     }
@@ -263,8 +263,9 @@ class ColorBlendScene: SKScene {
         self.updateStatus();
         self.canvas.fillColor = SKColor.whiteColor()
         
-        for (_, label) in counts {
-            label.text = ""
+        for name in counts.keys {
+            counts[name]!.count = 0
+            counts[name]!.label!.text = ""
         }
     }
     
@@ -276,6 +277,14 @@ class ColorBlendScene: SKScene {
         }
         self.updateStatus();
         self.canvas.fillColor = self.currentColor;
+    }
+    
+    func updateCounters() {
+        for counter in counts.values {
+            if (counter.count != 0) {
+                counter.label!.text = String(counter.count)
+            }
+        }
     }
 
     func updateStatus() {
