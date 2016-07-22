@@ -47,6 +47,8 @@ class ColorWheel: SKNode {
         hue = 0
         
         super.init()
+        
+        self.userInteractionEnabled = true
 
         title.position = CGPoint(x: size / 2 - title.frame.width / 2, y: size - labelHeight);
         
@@ -84,6 +86,27 @@ class ColorWheel: SKNode {
         level.text = "\(Int(hue * 360))\u{00B0}"
         level.position = CGPoint(x: size / 2 - level.frame.width / 2, y: 0)
     }
+    
+    func updateFromTouch(touch: UITouch) {
+        let location = touch.locationInNode(self)
+        let pi2: CGFloat = 3.14159 * 2;
+        hue = atan2(location.y - (size / 2), location.x - (size / 2)) / pi2
+        while (hue < 0) {
+            hue += 1
+        }
+
+        self.update()
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.updateFromTouch(touches.first!)
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.updateFromTouch(touches.first!)
+        (self.parent!.parent! as! ColorBlendScene).updateBlendFromColorWheel()
+    }
+    
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

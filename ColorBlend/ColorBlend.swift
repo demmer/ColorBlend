@@ -344,6 +344,10 @@ class ColorBlendScene: SKScene {
     }
     
     func updateBlendFromColorWheel() {
+        if (satLevel.level == 0 && valLevel.level == 0) {
+            satLevel.level = 1
+            valLevel.level = 1
+        }
         let newColor = UIColor(hue: colorWheel.hue, saturation: satLevel.level, brightness: valLevel.level, alpha: 1)
         reset()
         showBlend(color: newColor)
