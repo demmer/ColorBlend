@@ -161,7 +161,9 @@ class ColorUtils {
         var s: CGFloat = 0;
         var v: CGFloat = 0;
         color.getHue(&h, saturation: &s, brightness: &v, alpha: nil)
-        return Int(h * 360)
+        let hueDegrees = Int(round(h * 360))
+        //NSLog("getHueDegrees \(h) \(hueDegrees)")
+        return hueDegrees
     }
     
     static let PrimaryHues = [
@@ -255,8 +257,10 @@ class ColorUtils {
         
         var colors: [UIColor] = [];
 
+        // NSLog("hsvUnblend \(describe(color)) hsv: \(hueX) \(sat) \(val)")
+        
         // Special case the shades of white / gray / black
-        if (hueX == 0) {
+        if (hueX == 0 || val < 0.001) {
             if (val == 1.0) {
                 return [Constants.Palette.white]
             }
