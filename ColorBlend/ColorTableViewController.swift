@@ -36,6 +36,11 @@ class ColorTableViewController: UITableViewController, UISearchResultsUpdating {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
     }
+    
+    // XXX workaround bug
+    deinit {
+        self.searchController.view.removeFromSuperview()
+    }
 
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let search = searchController.searchBar.text!.lowercaseString
