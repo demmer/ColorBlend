@@ -101,6 +101,7 @@ class ColorLevel: SKNode {
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.updateFromTouch(touches.first!)
+        (self.parent!.parent! as! ColorBlendScene).updateBlendFromLevel(self)
     }
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
