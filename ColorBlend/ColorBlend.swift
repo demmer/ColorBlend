@@ -337,15 +337,20 @@ class ColorBlendScene: SKScene {
         if (level == redLevel || level == greenLevel || level == blueLevel) {
             let newColor = UIColor(red: redLevel.level, green: greenLevel.level, blue: blueLevel.level, alpha: 1);
             reset()
+            //NSLog("updating to blend \(redLevel.level) \(greenLevel.level) \(blueLevel.level)")
             showBlend(color: newColor)
         } else {
-            updateBlendFromColorWheel()
+            let newColor = UIColor(hue: colorWheel.hue, saturation: satLevel.level, brightness: valLevel.level, alpha: 1)
+            reset()
+            showBlend(color: newColor)
         }
     }
     
     func updateBlendFromColorWheel() {
-        if (satLevel.level == 0 && valLevel.level == 0) {
+        if (satLevel.level == 0) {
             satLevel.level = 1
+        }
+        if (valLevel.level == 0) {
             valLevel.level = 1
         }
         let newColor = UIColor(hue: colorWheel.hue, saturation: satLevel.level, brightness: valLevel.level, alpha: 1)
