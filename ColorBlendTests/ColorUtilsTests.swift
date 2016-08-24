@@ -123,7 +123,7 @@ class ColorUtilsTests: XCTestCase {
         XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.brown)),
                        "[Red 360 100 100] [Yellow 60 100 100] [White 0 0 100] [Black 0 0 0] [Black 0 0 0]")
         XCTAssertEqual(S(ColorUtils.hsvUnblend(Constants.Palette.pink)),
-                       "[Magenta 300 100 100] [Magenta 300 100 100] [Magenta 300 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100]")
+                       "[Magenta 300 100 100] [Magenta 300 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [Red 360 100 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100] [White 0 0 100]")
     }
     
     func testHSVUnblendAllColors() {
@@ -224,7 +224,6 @@ class ColorUtilsTests: XCTestCase {
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Cadmium green")!)), "Cadmium green")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Cadmium orange")!)), "Cadmium orange")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Cadmium red")!)), "Cadmium red")
-        XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Cadmium yellow")!)), "Cadmium yellow")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Café au lait")!)), "Café au lait")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Café noir")!)), "Café noir")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Cal Poly Pomona green")!)), "Cal Poly Pomona green")
@@ -237,7 +236,6 @@ class ColorUtilsTests: XCTestCase {
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Caput mortuum")!)), "Caput mortuum")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Cardinal")!)), "Cardinal")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Caribbean green")!)), "Caribbean green")
-        XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Carmine")!)), "Carmine")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Carmine pink")!)), "Carmine pink")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Carmine red")!)), "Carmine red")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Carnation pink")!)), "Carnation pink")
@@ -695,7 +693,6 @@ class ColorUtilsTests: XCTestCase {
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Sea green")!)), "Sea green")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Seal brown")!)), "Seal brown")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Seashell")!)), "Seashell")
-        XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Selective yellow")!)), "Selective yellow")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Sepia")!)), "Sepia")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Shadow")!)), "Shadow")
         XCTAssertEqual(ColorName.closestMatch(getBlend(ColorName.get("Shamrock green")!)), "Shamrock green")
