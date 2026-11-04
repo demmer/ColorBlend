@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
-   version = "1.3">
+   LastUpgradeVersion = "2720"
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
+               BlueprintIdentifier = "A10000000000000000000010"
                BuildableName = "ColorBlend.app"
                BlueprintName = "ColorBlend"
                ReferencedContainer = "container:ColorBlend.xcodeproj">
@@ -29,37 +29,17 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7E1EF6C1CF69DCC00443610"
+               BlueprintIdentifier = "A10000000000000000000020"
                BuildableName = "ColorBlendTests.xctest"
                BlueprintName = "ColorBlendTests"
                ReferencedContainer = "container:ColorBlend.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D70F06E41CBDC1E800581E76"
-               BuildableName = "ColorBlend.xctest"
-               BlueprintName = "ColorBlendUITests"
-               ReferencedContainer = "container:ColorBlend.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
-            BuildableName = "ColorBlend.app"
-            BlueprintName = "ColorBlend"
-            ReferencedContainer = "container:ColorBlend.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -75,14 +55,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
+            BlueprintIdentifier = "A10000000000000000000010"
             BuildableName = "ColorBlend.app"
             BlueprintName = "ColorBlend"
             ReferencedContainer = "container:ColorBlend.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -94,7 +72,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D70F06C11CBDC1E800581E76"
+            BlueprintIdentifier = "A10000000000000000000010"
             BuildableName = "ColorBlend.app"
             BlueprintName = "ColorBlend"
             ReferencedContainer = "container:ColorBlend.xcodeproj">

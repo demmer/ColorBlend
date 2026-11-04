@@ -1,5 +1,5 @@
 //
-//  ColorNames.swift
+//  ColorName.swift
 //  ColorBlend
 //
 //  Created by Michael Demmer on 5/25/16.
@@ -8,58 +8,45 @@
 
 import UIKit
 
-class ColorName {
-    var red: CGFloat;
-    var green: CGFloat;
-    var blue: CGFloat;
-    var name: String;
-    var color: UIColor;
-    
+/// A named reference color, used to label whatever the current blend looks like.
+nonisolated struct ColorName: Identifiable, Hashable, Sendable {
+    let name: String
+    let red: CGFloat
+    let green: CGFloat
+    let blue: CGFloat
+
+    var id: String { name }
+    var color: UIColor { UIColor(red: red, green: green, blue: blue, alpha: 1) }
+
     init(_ name: String, red: CGFloat, green: CGFloat, blue: CGFloat) {
         self.name = name
         self.red = red
         self.green = green
         self.blue = blue
-        self.color = UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
-    
-    static func get(name: String) -> ColorName? {
-        for spec in ColorNames {
-            if (spec.name == name) {
-                return spec
-            }
-        }
-        return nil;
+
+    static func named(_ name: String) -> ColorName? {
+        all.first { $0.name == name }
     }
-    
+
     func distance(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGFloat {
-        return pow(red - self.red, 2) +
-            pow(green - self.green, 2) +
-            pow(blue - self.blue, 2)
+        pow(red - self.red, 2) + pow(green - self.green, 2) + pow(blue - self.blue, 2)
     }
 
     // Compute the closest named matching color for the given blend
-    static func closestMatch(color: UIColor) -> String {
-        var red: CGFloat = 0;
-        var green: CGFloat = 0;
-        var blue: CGFloat = 0;
-        var name = "unknown";
-        
-        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
-        var dmin = CGFloat(100000.0)
-        for color in ColorNames {
-            let distance = color.distance(red, green: green, blue: blue)
-            if (distance < dmin) {
-                dmin = distance;
-                name = color.name
-            }
-        }
-        
-        return name;
+    static func closestMatch(_ color: UIColor) -> String {
+        let (red, green, blue) = color.rgb
+        return all.min { $0.distance(red: red, green: green, blue: blue) < $1.distance(red: red, green: green, blue: blue) }!.name
     }
-    
-    
-    static var ColorNames: [ColorName] = [
+
+    /// All named colors, ordered by hue, then value, then saturation, for browsing.
+    static let sortedByHue: [ColorName] = all.sorted { a, b in
+        let (h, s, v) = a.color.hsb
+        let (h2, s2, v2) = b.color.hsb
+        return h < h2 || (h == h2 && v < v2) || (h == h2 && v == v2 && s < s2)
+    }
+
+    static let all: [ColorName] = [
         ColorName("Air Force blue", red: 0.36470588235294116, green: 0.5411764705882353, blue: 0.6588235294117647),
         ColorName("Alice blue", red: 0.9411764705882353, green: 0.9725490196078431, blue: 1),
         ColorName("Almond", red: 0.9372549019607843, green: 0.8705882352941177, blue: 0.803921568627451),
