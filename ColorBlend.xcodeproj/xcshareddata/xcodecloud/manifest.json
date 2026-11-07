@@ -1,0 +1,9 @@
+{
+  "id" : "e77feb5e-c384-42d2-9d50-71f0bfada032",
+  "targets" : [
+    {
+      "id" : "4da8a131-4720-48f9-9437-11f98f465eb5",
+      "name" : "ColorBlend"
+    }
+  ]
+}
